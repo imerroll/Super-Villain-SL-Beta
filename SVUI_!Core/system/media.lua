@@ -61,7 +61,7 @@ SOUND:Register("Phase", [[sound\doodad\be_scryingorb_explode.ogg]])
 local LSM = _G.LibStub("LibSharedMedia-3.0")
 
 LSM:Register("background", "SVUI Default BG", [[Interface\AddOns\SVUI_!Core\assets\backgrounds\DEFAULT]])
-LSM:Register("background", "SVUI Transparent BG", [[Interface\AddOns\SVUI_!Core\assets\backgrounds\TRANSPARENT]])
+LSM:Register("background", "SVUI Transparent BG", [[Interface\BUTTONS\WHITE8X8]])
 LSM:Register("background", "SVUI Button BG", [[Interface\AddOns\SVUI_!Core\assets\backgrounds\BUTTON]])
 LSM:Register("background", "SVUI Model BG", [[Interface\AddOns\SVUI_!Core\assets\backgrounds\MODEL]])
 
@@ -200,7 +200,7 @@ do
 		},
 		["background"] = {
 			["default"] 	= [[Interface\AddOns\SVUI_!Core\assets\backgrounds\DEFAULT]],
-			["transparent"] = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\TRANSPARENT]],
+			["transparent"] = [[Interface\BUTTONS\WHITE8X8]],
 			["button"]      = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\BUTTON]],
 			["pattern"]     = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\pattern\PATTERN1]],
 			["premium"]     = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\art\ART1]],
@@ -461,7 +461,7 @@ do
 				bgFile = [[Interface\DialogFrame\UI-DialogBox-Background]],
 			    tile = false,
 			    tileSize = 0,
-			    edgeFile = [[Interface\AddOns\SVUI_!Core\assets\textures\EMPTY]],
+			    edgeFile = [[Interface\BUTTONS\WHITE8X8]],
 			    edgeSize = 1,
 			    insets =
 			    {
@@ -472,7 +472,7 @@ do
 			    },
 			},
 			["outline"] = {
-				bgFile = [[Interface\AddOns\SVUI_!Core\assets\textures\EMPTY]],
+				bgFile = [[Interface\BUTTONS\WHITE8X8]],
 			    tile = false,
 			    tileSize = 0,
 			    edgeFile = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
@@ -486,7 +486,7 @@ do
 			    },
 			},
 			["shadowoutline"] = {
-				bgFile = [[Interface\AddOns\SVUI_!Core\assets\textures\EMPTY]],
+				bgFile = [[Interface\BUTTONS\WHITE8X8]],
 			    tile = false,
 			    tileSize = 0,
 			    edgeFile = [[Interface\AddOns\SVUI_!Core\assets\borders\SHADOW]],
@@ -523,7 +523,7 @@ if(GetLocale() ~= "enUS") then
 end
 SV.SplashImage 	= [[Interface\AddOns\SVUI_!Core\assets\textures\SPLASH]];
 SV.BaseTexture 	= [[Interface\AddOns\SVUI_!Core\assets\backgrounds\DEFAULT]];
-SV.NoTexture 	  = [[Interface\AddOns\SVUI_!Core\assets\textures\EMPTY]];
+SV.NoTexture 	  = [[Interface\BUTTONS\WHITE8X8]];
 
 ---------------------------------------------------------------------
 -- Returns a color value based on percentages.

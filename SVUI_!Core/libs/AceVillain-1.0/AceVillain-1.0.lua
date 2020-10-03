@@ -128,7 +128,7 @@ do
 	function AceVillain:GetBaseFrameWithWindow()
 		local frame = self:GetBaseFrame()
 
-		local displayButton = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+		local displayButton = CreateFrame("Button", nil, frame)
 			displayButton:SetHeight(42)
 			displayButton:SetWidth(42)
 			displayButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 1, -2)
@@ -148,7 +148,7 @@ end
 do
 
 	local sliderBackdrop = {
-		["bgFile"] = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\TRANSPARENT]],
+		["bgFile"] = [[Interface\BUTTONS\WHITE8X8]],
 		["edgeFile"] = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
 		["tile"] = false,
 		["edgeSize"] = 1,

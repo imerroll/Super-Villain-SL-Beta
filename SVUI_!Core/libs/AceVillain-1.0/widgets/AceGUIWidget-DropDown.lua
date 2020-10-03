@@ -43,7 +43,7 @@ do
 
 	--[[ Static data ]]--
 	local backdrop  = {
-		bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
+		bgFile = "Interface\BUTTONS\WHITE8X8",
 		edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 		tile = false, edgeSize = 1,
 		insets = { left = 0, right = 0, top = 0, bottom = 0 }

@@ -285,7 +285,7 @@ local function ScreenBorderVisibility()
 end
 
 local function SetBasicBackdrop(frame)
-	local backdrop = CreateFrame("Frame", nil, frame)
+	local backdrop = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	backdrop:InsetPoints(frame,4,4)
 	backdrop:SetFrameStrata("BACKGROUND")
 
@@ -358,7 +358,7 @@ end
 
 function MOD.SetThemedBackdrop(frame, forceTop)
 	local frameLevel = frame:GetFrameLevel()
-	local backdrop = CreateFrame("Frame", nil, frame)
+	local backdrop = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	backdrop:SetAllPoints(frame)
 	backdrop:SetFrameStrata("BACKGROUND")
 	backdrop.forceTop = forceTop
@@ -890,21 +890,21 @@ local DockBar_UpdateOrder = function(self)
 		orderList[i] = nil;
 	end
 
-	-- local saved = MOD.private.Order[location];
-	-- local savedCount = #saved;
-	-- local safeIndex = 1;
-	-- for i=1, savedCount do
-		-- local nextName = saved[i];
-		-- local nextButton = buttonList[nextName];
-		-- if(nextButton) then
-			-- if(not ORDER_TEMP[nextName]) then
-				-- ORDER_TEMP[nextName] = true;
-				-- nextButton.OrderIndex = safeIndex;
-				-- orderList[safeIndex] = nextName;
-				-- safeIndex = safeIndex + 1;
-			-- end
-		-- end
-	-- end
+	local saved = MOD.private.Order[location];
+	local savedCount = #saved;
+	local safeIndex = 1;
+	for i=1, savedCount do
+		local nextName = saved[i];
+		local nextButton = buttonList[nextName];
+		if(nextButton) then
+			if(not ORDER_TEMP[nextName]) then
+				ORDER_TEMP[nextName] = true;
+				nextButton.OrderIndex = safeIndex;
+				orderList[safeIndex] = nextName;
+				safeIndex = safeIndex + 1;
+			end
+		end
+	end
 end
 
 local DockBar_ChangeOrder = function(self, button, targetIndex)
@@ -974,7 +974,7 @@ end
 
 local function CreateDivider(parent)
 	local size = parent.ToolBar:GetHeight();
-	local frame = CreateFrame("Frame", nil, parent);
+	local frame = CreateFrame("Frame", nil, parent,BackdropTemplateMixin and "BackdropTemplate");
 	frame:SetSize(1,size);
 	frame:SetStyle("!_Frame", "Transparent")
 	frame:SetBackdropColor(0, 0.5, 1)

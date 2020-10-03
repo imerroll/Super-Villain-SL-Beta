@@ -267,7 +267,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local backdrop  = {
-	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
+	bgFile = "Interface\BUTTONS\WHITE8X8",
 	edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 	tile = true, tileSize = 16, edgeSize = 8,
 	insets = { left = 2, right = 2, top = 2, bottom = 2 }

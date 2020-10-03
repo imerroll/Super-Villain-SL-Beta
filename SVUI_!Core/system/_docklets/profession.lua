@@ -169,20 +169,20 @@ local function LoadToolBarProfessions()
 		CreateMacroToolButton(proName, proID, cooking)
 	end
 
-	-- if(prof2 ~= nil and (SV.db.Dock.dockTools.secondary)) then
-		-- proName, _, _, _, _, _, proID = GetProfessionInfo(6)
-		-- if(proID ~= 182 and proID ~= 393) then
-			-- CreateMacroToolButton(proName, proID, prof2)
-		-- end
+	if(prof2 ~= nil and (SV.db.Dock.dockTools.secondary)) then
+		proName, _, _, _, _, _, proID = GetProfessionInfo(6)
+		if(proID ~= 182 and proID ~= 393) then
+			CreateMacroToolButton(proName, proID, prof2)
+		end
 
-	-- end
+	end
 
-	-- if(prof1 ~= nil and (SV.db.Dock.dockTools.primary)) then
-		-- proName, _, _, _, _, _, proID = GetProfessionInfo(5)
-		-- if(proID ~= 182 and proID ~= 393) then
-			-- CreateMacroToolButton(proName, proID, prof1)
-		-- end
-	-- end
+	if(prof1 ~= nil and (SV.db.Dock.dockTools.primary)) then
+		proName, _, _, _, _, _, proID = GetProfessionInfo(5)
+		if(proID ~= 182 and proID ~= 393) then
+			CreateMacroToolButton(proName, proID, prof1)
+		end
+	end
 
 	MOD.ToolBarLoaded = true
 end

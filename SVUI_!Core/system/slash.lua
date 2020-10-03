@@ -174,7 +174,7 @@ do
 		if(self.lastupdate >= interval) then
 			self.lastupdate = 0
 			if(self.delay > 0) then
-				SendChatMessage(tostring(self.delay).."..", _getchannel(true))
+				--SendChatMessage(tostring(self.delay).."..", _getchannel(true))
 				if(COUNT_COLOR[self.delay]) then
 					self.text:SetTexture(COUNT_TEX .. self.delay)
 					self.text:SetVertexColor(unpack(COUNT_COLOR[self.delay]))
@@ -184,7 +184,7 @@ do
 				end
 				self.delay = self.delay - 1
 			else
-				SendChatMessage(L["Pulling Now!"], _getchannel(true))
+				--SendChatMessage(L["Pulling Now!"], _getchannel(true))
 				self:Stop()
 			end
 		end

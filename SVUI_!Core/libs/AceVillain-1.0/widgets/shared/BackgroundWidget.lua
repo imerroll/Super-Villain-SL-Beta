@@ -197,7 +197,7 @@ do
 
 	local function SetDropDownStyle(self, xTopleft, yTopleft, xBottomright, yBottomright)
 		self:RemoveTextures()
-		self:SetStyle("Frame", "Transparent")
+		self:SetStyle("Frame", "Window")
 		--self.Panel:SetPoint("TOPLEFT", self, "TOPLEFT", xTopleft, yTopleft)
 		--self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", xBottomright, yBottomright)
 	end

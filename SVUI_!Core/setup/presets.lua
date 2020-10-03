@@ -884,7 +884,7 @@ local function LoadPageData()
 		{
 			["SubTitle"] = RESOLUTION,
 
-			["Desc1"] = (L["Your current resolution is %s, this is considered a %s resolution."]):format(GetCVar("gxFullscreenResolution"), (SV.LowRez and LOW or HIGH)),
+			["Desc1"] = (L["Your current resolution is %s, this is considered a %s resolution."]):format(GetCVar("gxWindowedResolution"), (SV.LowRez and LOW or HIGH)),
 			["Desc2"] = isLowRez,
 			["Desc3"] = L["CHOOSE_OR_DIE"],
 

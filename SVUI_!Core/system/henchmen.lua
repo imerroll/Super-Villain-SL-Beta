@@ -337,7 +337,7 @@ local function CreateHenchmenFrame()
 	HenchmenCalloutFramePic:SetAllPoints(HenchmenCalloutFrame)
 	HenchmenCalloutFrame:Hide()
 
-	local HenchmenFrameBG = CreateFrame("Frame", "HenchmenFrameBG", UIParent)
+	local HenchmenFrameBG = CreateFrame("Frame", "HenchmenFrameBG", UIParent,BackdropTemplateMixin and "BackdropTemplate")
 	HenchmenFrameBG:SetAllPoints(WorldFrame)
 	HenchmenFrameBG:SetBackdrop({bgFile = [[Interface\BUTTONS\WHITE8X8]]})
 	HenchmenFrameBG:SetBackdropColor(0,0,0,0.9)

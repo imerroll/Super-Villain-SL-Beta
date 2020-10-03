@@ -20,7 +20,7 @@
                 </Attributes>
                 <Layers>
                     <Layer level="OVERLAY">
-                        <Texture parentKey="Icon" file="Interface\AddOns\SVUI_!Core\assets\textures\EMPTY">
+                        <Texture parentKey="Icon" file="Interface\BUTTONS\WHITE8X8">
                             <Anchors>
                                 <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="2" y="-2" />
                                 <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-2" y="2" />
@@ -45,7 +45,7 @@
                 </Attributes>
                 <Layers>
                     <Layer level="OVERLAY">
-                        <Texture parentKey="Icon" file="Interface\AddOns\SVUI_!Core\assets\textures\EMPTY">
+                        <Texture parentKey="Icon" file="Interface\BUTTONS\WHITE8X8">
                             <Anchors>
                                 <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="2" y="-2" />
                                 <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-2" y="2" />
@@ -116,7 +116,7 @@
                 </Attributes>
                 <Layers>
                     <Layer level="OVERLAY">
-                        <Texture parentKey="Icon" file="Interface\AddOns\SVUI_!Core\assets\textures\EMPTY">
+                        <Texture parentKey="Icon" file="Interface\BUTTONS\WHITE8X8">
                             <Anchors>
                                 <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="2" y="-2" />
                                 <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-2" y="2" />
@@ -141,7 +141,7 @@
                 </Attributes>
                 <Layers>
                     <Layer level="OVERLAY">
-                        <Texture parentKey="Icon" file="Interface\AddOns\SVUI_!Core\assets\textures\EMPTY">
+                        <Texture parentKey="Icon" file="Interface\BUTTONS\WHITE8X8">
                             <Anchors>
                                 <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="2" y="-2" />
                                 <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-2" y="2" />

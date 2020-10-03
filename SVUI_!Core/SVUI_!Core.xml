@@ -6,6 +6,7 @@
     <Include file="xml\styles.xml"/>
     <Include file="xml\widgets.xml"/>
     <Include file="xml\docks.xml"/>
+	<!--<Include file="xml\test.xml"/>-->
     <Script file="system\damage_text.lua"/>
     <Script file="system\core.lua"/>
 	  <Script file="system\media.lua"/>

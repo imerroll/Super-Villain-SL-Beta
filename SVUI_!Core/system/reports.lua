@@ -589,7 +589,7 @@ do
 		if ForceHideBGStats then ForceHideBGStats = nil end
 
 		local baseWidth, dockHeight = SV.Dock.BottomCenter:GetSize()
-		local dockWidth = 350;
+		local dockWidth = baseWidth;
 		MOD.ReportGroup1:SetSize(dockWidth, dockHeight);
 		MOD.ReportGroup2:SetSize(dockWidth, dockHeight);
 		MOD.ReportGroup3:SetSize(dockWidth, dockHeight);
@@ -727,27 +727,27 @@ function MOD:Load()
 	--BOTTOM CENTER BARS
 	local bottomLeft = CreateFrame("Frame", "SVUI_ReportsGroup1", SV.Dock.BottomCenter)
 	bottomLeft:SetSize(dockWidth, dockHeight)
-	bottomLeft:SetPoint("BOTTOMLEFT", SV.Dock.BottomCenter, "BOTTOMLEFT", 0, 0)
+	bottomLeft:SetPoint("BOTTOMLEFT", SV.Dock.BottomCenter, "BOTTOMLEFT", -225, 0)
 	SV:NewAnchor(bottomLeft, L["Data Reports 1"])
 	self:NewHolder(bottomLeft, 3, "ANCHOR_CURSOR")
 
 	local bottomRight = CreateFrame("Frame", "SVUI_ReportsGroup2", SV.Dock.BottomCenter)
 	bottomRight:SetSize(dockWidth, dockHeight)
-	bottomRight:SetPoint("BOTTOMRIGHT", SV.Dock.BottomCenter, "BOTTOMRIGHT", 0, 0)
+	bottomRight:SetPoint("BOTTOMRIGHT", SV.Dock.BottomCenter, "BOTTOMRIGHT", 225, 0)
 	SV:NewAnchor(bottomRight, L["Data Reports 2"])
 	self:NewHolder(bottomRight, 3, "ANCHOR_CURSOR")
 
 	--TOP CENTER BARS
 	local topLeft = CreateFrame("Frame", "SVUI_ReportsGroup3", SV.Dock.TopCenter)
 	topLeft:SetSize(dockWidth, dockHeight)
-	topLeft:SetPoint("TOPLEFT", SV.Dock.TopCenter, "TOPLEFT", 0, 0)
+	topLeft:SetPoint("TOPLEFT", SV.Dock.TopCenter, "TOPLEFT", -225, 0)
 
 	SV:NewAnchor(topLeft, L["Data Reports 3"])
 	self:NewHolder(topLeft, 3, "ANCHOR_CURSOR", 1)
 
 	local topRight = CreateFrame("Frame", "SVUI_ReportsGroup4", SV.Dock.TopCenter)
 	topRight:SetSize(dockWidth, dockHeight)
-	topRight:SetPoint("TOPRIGHT", SV.Dock.TopCenter, "TOPRIGHT", 0, 0)
+	topRight:SetPoint("TOPRIGHT", SV.Dock.TopCenter, "TOPRIGHT", 225, 0)
 
 	SV:NewAnchor(topRight, L["Data Reports 4"])
 	self:NewHolder(topRight, 3, "ANCHOR_CURSOR", 2)

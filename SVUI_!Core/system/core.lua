@@ -85,7 +85,7 @@ _G.SVUI_ICON_COORDS = {0.1, 0.9, 0.1, 0.9};
 
 ---- LOCALS ----
 
-local rez = GetCVar("gxFullscreenResolution");
+local rez = GetCVar("gxWindowedResolution");
 local baseHeight = tonumber(rez:match("%d+x(%d+)"))
 local baseWidth = tonumber(rez:match("(%d+)x%d+"))
 local defaultDockWidth = 450;
@@ -216,7 +216,7 @@ SV.Allegiance         = UnitFactionGroup("player");
 SV.ClassRole          = "";
 SV.SpecificClassRole  = "NONE";
 
-SV.Screen = CreateFrame("Frame", "SVUIParent", UIParent);
+SV.Screen = CreateFrame("Frame", "SVUIParent", UIParent,BackdropTemplateMixin and "BackdropTemplate");
 SV.Screen:SetFrameLevel(UIParent:GetFrameLevel());
 SV.Screen:SetPoint("CENTER", UIParent, "CENTER");
 SV.Screen:SetSize(UIParent:GetSize());

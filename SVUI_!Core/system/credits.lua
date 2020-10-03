@@ -144,7 +144,7 @@ end
 
 local function ShowIssueString()
  -- local WEEKDAY, MONTHNUM, DAYNUM, YEARNUM = C_Calendar.GetDate();
-  local ISSUE_TEXT = ("Issue: #%d, Volume: #%d");
+  local ISSUE_TEXT = ("Issue: 0, Volume: 0");
   local flavorKey = random(1,2);
   local flavorList = FLAVOR_TEXTS[flavorKey];
   local flavorPattern = flavorList[random(1, #flavorList)]

@@ -58,7 +58,7 @@ Layout.Sections = {
 	['GENERAL'] = {}
 };
 
-local CLOAKED_BG = CreateFrame('Frame', nil, UIParent)
+local CLOAKED_BG = CreateFrame('Frame', nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 
 local UIPanels = {};
 UIPanels["AchievementFrame"] 				= { moving = false, snapped = false, canupdate = false, cansetpoint = false, centered = false };
@@ -610,7 +610,7 @@ function Layout:Movable_OnDragStop()
 end
 
 function Layout:Movable_OnShow()
-	--self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+	self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
 end
 
 function Layout:Movable_OnEnter()
@@ -619,7 +619,7 @@ function Layout:Movable_OnEnter()
 	self:SetAlpha(1)
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(0, 1, 1)
-		--self:SetBackdropBorderColor(0, 0.7, 1, 1)
+		self:SetBackdropBorderColor(0, 0.7, 1, 1)
 	end
 	UpdateFrameTarget = self;
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-ON]])
@@ -631,7 +631,7 @@ function Layout:Movable_OnLeave()
 	if TheHand.UserHeld then return end
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(1, 1, 1)
-		--self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+		self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
 	end
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-OFF]])
 	TheHand:Hide()
@@ -688,7 +688,7 @@ local function SetNewAnchor(frame, moveName, title, postDragFunc)
 		Layout.Sections[currentCategory][moveName] = true;
 	end
 
-	local grip = CreateFrame("Button", moveName, SV.Screen)
+	local grip = CreateFrame("Button", moveName, SV.Screen,BackdropTemplateMixin and "BackdropTemplate")
 	grip:SetFrameLevel(frame:GetFrameLevel() + 1)
 	grip:SetClampedToScreen(true)
 	grip:SetFrameStrata("DIALOG")
@@ -1249,21 +1249,21 @@ local function InitializeMovables()
 	CLOAKED_BG:SetParent(Layout);
 	CLOAKED_BG:SetFrameStrata('BACKGROUND')
 	CLOAKED_BG:SetFrameLevel(0)
-	-- CLOAKED_BG:SetBackdrop({
-		-- bgFile = [[Interface\BUTTONS\WHITE8X8]],
-	    -- tile = false,
-	    -- tileSize = 0,
-	    -- edgeFile = [[Interface\AddOns\SVUI_!Core\assets\textures\EMPTY]],
-	    -- edgeSize = 1,
-	    -- insets =
-	    -- {
-	        -- left = 0,
-	        -- right = 0,
-	        -- top = 0,
-	        -- bottom = 0,
-	    -- },
-	-- });
-	-- CLOAKED_BG:SetBackdropColor(0,0,0,0.15);
+	CLOAKED_BG:SetBackdrop({
+		bgFile = [[Interface\BUTTONS\WHITE8X8]],
+	    tile = false,
+	    tileSize = 0,
+	    edgeFile = [[Interface\BUTTONS\WHITE8X8]],
+	    edgeSize = 1,
+	    insets =
+	    {
+	        left = 0,
+	        right = 0,
+	        top = 0,
+	        bottom = 0,
+	    },
+	});
+	CLOAKED_BG:SetBackdropColor(0,0,0,0.15);
 
 	Layout.Anchors = SV.db.LAYOUT or {}
 	--Layout:SetPanelColor("yellow")

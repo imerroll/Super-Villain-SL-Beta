@@ -404,7 +404,7 @@ local function MakeSlots(id)
 	slot.iconFrame:SetHeight(size)
 	slot.iconFrame:SetWidth(size)
 	slot.iconFrame:SetPoint("RIGHT", slot)
-	slot.iconFrame:SetStyle("Frame", "Transparent")
+	slot.iconFrame:SetStyle("Frame", "Window")
 
 	slot.icon = slot.iconFrame:CreateTexture(nil, "ARTWORK")
 	slot.icon:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))

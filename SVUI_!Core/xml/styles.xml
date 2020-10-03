@@ -1,5 +1,5 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Frame name="SVUI_CoreStyle_Default" virtual="true">
+	<Frame name="SVUI_CoreStyle_Default" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="default" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -14,6 +14,7 @@
             <BackgroundInsets left="0" right="0" top="0" bottom="0" />
             <Color r="0.2" g="0.2" b="0.2" a="1" />
             <BorderColor r="0" g="0" b="0" a="1" />
+			
         </Backdrop>
         <Layers>
             <Layer level="BACKGROUND" textureSubLevel="1">
@@ -23,14 +24,14 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Transparent" virtual="true">
+    <Frame name="SVUI_CoreStyle_Transparent" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="transparent" />
             <Attribute name="panelPadding" type="number" value="2" />
             <Attribute name="panelColor" type="string" value="transparent" />
             <Attribute name="panelGradient" type="boolean" value="false" />
             <Attribute name="panelTexUpdate" type="boolean" value="false" />
-            <Attribute name="panelSkipUpdate" type="boolean" value="true" />
+            <Attribute name="panelSkipUpdate" type="boolean" value="false" />
         </Attributes>
         <Backdrop bgFile="Interface\BUTTONS\WHITE8X8" edgeFile="Interface\BUTTONS\WHITE8X8" tile="false">
             <EdgeSize val="2" />
@@ -41,7 +42,7 @@
         </Backdrop>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Button" virtual="true">
+    <Frame name="SVUI_CoreStyle_Button" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="button" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -57,6 +58,8 @@
             <Color r="0.2" g="0.2" b="0.2" a="1" />
             <BorderColor r="0" g="0" b="0" a="1" />
         </Backdrop>
+		
+  
         <Frames>
             <Frame parentKey="Shadow" inherits="SVUI_ShadowTemplate" />
         </Frames>
@@ -84,7 +87,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_ActionSlot" virtual="true">
+    <Frame name="SVUI_CoreStyle_ActionSlot" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="actionslot" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -151,7 +154,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Icon" virtual="true">
+    <Frame name="SVUI_CoreStyle_Icon" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="icon" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -162,7 +165,7 @@
             <Attribute name="panelOffset" type="number" value="0" />
             <Attribute name="shadowAlpha" type="number" value="0.5" />
         </Attributes>
-        <Backdrop bgFile="Interface\AddOns\SVUI_!Core\assets\backgrounds\EMPTY" edgeFile="Interface\BUTTONS\WHITE8X8" tile="false">
+        <Backdrop bgFile="Interface\BUTTONS\WHITE8X8" edgeFile="Interface\BUTTONS\WHITE8X8" tile="false">
             <EdgeSize val="1" />
             <TileSize val="0" />
             <BackgroundInsets left="1" right="1" top="1" bottom="1" />
@@ -218,7 +221,7 @@
         </Frames>
     </Frame>
 
-	<Frame name="SVUI_CoreStyle_CheckButton" virtual="true">
+	<Frame name="SVUI_CoreStyle_CheckButton" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="checkbox" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -236,7 +239,7 @@
         </Backdrop>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Inset" virtual="true">
+    <Frame name="SVUI_CoreStyle_Inset" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="inset" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -254,7 +257,7 @@
         </Backdrop>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_EditBox" virtual="true">
+    <Frame name="SVUI_CoreStyle_EditBox" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="editbox" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -288,7 +291,7 @@
         
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Lite" virtual="true">
+    <Frame name="SVUI_CoreStyle_Lite" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="lite" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -306,7 +309,7 @@
         </Backdrop>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Bar" virtual="true">
+    <Frame name="SVUI_CoreStyle_Bar" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="bar" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -330,7 +333,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Paper" virtual="true">
+    <Frame name="SVUI_CoreStyle_Paper" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="paper" />
             <Attribute name="panelPadding" type="number" value="3" />
@@ -354,7 +357,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Container" virtual="true">
+    <Frame name="SVUI_CoreStyle_Container" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="container" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -378,7 +381,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Pattern" virtual="true">
+    <Frame name="SVUI_CoreStyle_Pattern" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="pattern" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -399,7 +402,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Premium" virtual="true">
+    <Frame name="SVUI_CoreStyle_Premium" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="premium" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -420,7 +423,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Model" virtual="true">
+    <Frame name="SVUI_CoreStyle_Model" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="model" />
             <Attribute name="panelPadding" type="number" value="1" />
@@ -442,7 +445,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Window" virtual="true">
+    <Frame name="SVUI_CoreStyle_Window" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="window" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -499,7 +502,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Window2" virtual="true">
+    <Frame name="SVUI_CoreStyle_Window2" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="window2" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -512,7 +515,7 @@
             <EdgeSize val="2" />
             <TileSize val="0" />
             <BackgroundInsets left="1" right="1" top="1" bottom="1" />
-            <Color r="0.2" g="0.2" b="0.2" a="1" />
+            <Color r="1" g="1" b="1" a="0.4" />
             <BorderColor r="0" g="0" b="0" a="1" />
         </Backdrop>
         <Layers>
@@ -523,7 +526,7 @@
                         <Anchor point="TOPRIGHT" relativePoint="TOP" />
                         <Anchor point="BOTTOMLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                     <Color r="1" g="1" b="1" a="0.4" />
                 </Texture>
                 <Texture parentKey="TopRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-TOPRIGHT">
                     <Anchors>
@@ -531,15 +534,15 @@
                         <Anchor point="TOPLEFT" relativePoint="TOP" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                     <Color r="1" g="1" b="1" a="0.4" />
                 </Texture>
-                <Texture parentKey="BottomLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMLEFT">
+                <Texture parentKey="BottomLeft" nonBlocking="false" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMLEFT">
                     <Anchors>
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
                         <Anchor point="TOPLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                     <Color r="1" g="1" b="1" a="0.4" />
                 </Texture>
                 <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMRIGHT">
                     <Anchors>
@@ -547,7 +550,7 @@
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
                         <Anchor point="TOPRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="1" g="1" b="1" a="0.4" />
                 </Texture>
             </Layer>
         </Layers>
@@ -556,7 +559,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_Blackout" virtual="true">
+    <Frame name="SVUI_CoreStyle_Blackout" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="blackout" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -584,7 +587,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_UnitLarge" virtual="true">
+    <Frame name="SVUI_CoreStyle_UnitLarge" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="unitlarge" />
             <Attribute name="panelPadding" type="number" value="2" />
@@ -602,7 +605,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CoreStyle_UnitSmall" virtual="true">
+    <Frame name="SVUI_CoreStyle_UnitSmall" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="panelID" type="string" value="unitsmall" />
             <Attribute name="panelPadding" type="number" value="2" />
