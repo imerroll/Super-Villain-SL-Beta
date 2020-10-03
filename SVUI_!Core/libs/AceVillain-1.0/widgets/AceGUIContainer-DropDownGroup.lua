@@ -106,7 +106,7 @@ local PaneBackdrop  = {
 }
 
 local function Constructor()
-	local frame = CreateFrame("Frame",BackdropTemplateMixin and "BackdropTemplate",BackdropTemplateMixin and "BackdropTemplate")
+	local frame = CreateFrame("Frame",BackdropTemplateMixin and "BackdropTemplate")
 	frame:SetHeight(100)
 	frame:SetWidth(100)
 	frame:SetFrameStrata("FULLSCREEN_DIALOG")

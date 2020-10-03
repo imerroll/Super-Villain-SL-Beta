@@ -238,57 +238,57 @@ local function GetBuildingData()
 	local now = time();
 	local prefixed = false;
 
-	local buildings = C_Garrison.GetBuildings(LE_GARRISON_TYPE_6_0)
-	for i = 1, #buildings do
-		local buildingID = buildings[i].buildingID
-		local plotID = buildings[i].plotID
+	-- local buildings = C_Garrison.GetBuildings(LE_GARRISON_TYPE_6_0)
+	-- for i = 1, #buildings do
+		-- local buildingID = buildings[i].buildingID
+		-- local plotID = buildings[i].plotID
 
-		local id, name, texPrefix, icon, rank, isBuilding, timeStart, buildTime, canActivate, canUpgrade, isPrebuilt = C_Garrison.GetOwnedBuildingInfoAbbrev(plotID)
-		local remaining;
+		-- local id, name, texPrefix, icon, rank, isBuilding, timeStart, buildTime, canActivate, canUpgrade, isPrebuilt = C_Garrison.GetOwnedBuildingInfoAbbrev(plotID)
+		-- local remaining;
 
-		if(isBuilding) then
-			local timeLeft = buildTime - (now - timeStart);
-			if(canActivate or timeLeft < 0) then
-				remaining = L["Complete!"]
-			else
-				remaining = ("Building %s"):format(getColoredString("("..SV:ParseSeconds(timeLeft)..")", "lightgrey"))
-			end
-		else
-			local name, texture, shipmentCapacity, shipmentsReady, shipmentsTotal, creationTime, duration, timeleftString, itemName, itemIcon, itemQuality, itemID = C_Garrison.GetLandingPageShipmentInfo(buildingID)
-			if(shipmentsReady and shipmentsReady > 0) then
-				timeleftString = timeleftString or 'Unknown'
-				remaining = ("Ready: %s, Next: %s"):format(getColoredString(shipmentsReady, "green"), getColoredString(timeleftString, "lightgrey"))
-			elseif(timeleftString) then
-				remaining = ("Next: %s"):format(getColoredString(timeleftString, "lightgrey"))
-			end
-		end
+		-- if(isBuilding) then
+			-- local timeLeft = buildTime - (now - timeStart);
+			-- if(canActivate or timeLeft < 0) then
+				-- remaining = L["Complete!"]
+			-- else
+				-- remaining = ("Building %s"):format(getColoredString("("..SV:ParseSeconds(timeLeft)..")", "lightgrey"))
+			-- end
+		-- else
+			-- local name, texture, shipmentCapacity, shipmentsReady, shipmentsTotal, creationTime, duration, timeleftString, itemName, itemIcon, itemQuality, itemID = C_Garrison.GetLandingPageShipmentInfo(buildingID)
+			-- if(shipmentsReady and shipmentsReady > 0) then
+				-- timeleftString = timeleftString or 'Unknown'
+				-- remaining = ("Ready: %s, Next: %s"):format(getColoredString(shipmentsReady, "green"), getColoredString(timeleftString, "lightgrey"))
+			-- elseif(timeleftString) then
+				-- remaining = ("Next: %s"):format(getColoredString(timeleftString, "lightgrey"))
+			-- end
+		-- end
 
-		if(remaining) then
-			if(not prefixed) then
-				GameTooltip:AddLine(" ", 1, 1, 1)
-				GameTooltip:AddLine("Buildings / Work Orders", 1, 0.7, 0)
-				prefixed = true
-			end
-			local building = ("|cffFF5500%s|r|cff888888 - |r|cffFFFF00Rank %s|r"):format(name, rank);
-			GameTooltip:AddDoubleLine(building, remaining, 0, 1, 0, 1, 1, 1)
-		end
-	end
+		-- if(remaining) then
+			-- if(not prefixed) then
+				-- GameTooltip:AddLine(" ", 1, 1, 1)
+				-- GameTooltip:AddLine("Buildings / Work Orders", 1, 0.7, 0)
+				-- prefixed = true
+			-- end
+			-- local building = ("|cffFF5500%s|r|cff888888 - |r|cffFFFF00Rank %s|r"):format(name, rank);
+			-- GameTooltip:AddDoubleLine(building, remaining, 0, 1, 0, 1, 1, 1)
+		-- end
+	-- end
 end
 
 local SetGarrisonTooltip = function(self)
 	if(not InCombatLockdown()) then C_Garrison.RequestLandingPageShipmentInfo() end
-	local name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1220)
-	local texStr = ("\124T%s:12\124t %d"):format(tex, amount)
-	GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
-	name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1155)
-	texStr = ("\124T%s:12\124t %d"):format(tex, amount)
-	GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
-	name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(824)
-	texStr = ("\124T%s:12\124t %d"):format(tex, amount)
-	GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
-	name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1101)
-	texStr = ("\124T%s:12\124t %d"):format(tex, amount)
-	GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
+	-- local name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1220)
+	-- local texStr = ("\124T%s:12\124t %d"):format(tex, amount)
+	-- GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
+	-- name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1155)
+	-- texStr = ("\124T%s:12\124t %d"):format(tex, amount)
+	-- GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
+	-- name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(824)
+	-- texStr = ("\124T%s:12\124t %d"):format(tex, amount)
+	-- GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
+	-- name, amount, tex, week, weekmax, maxed, discovered = GetCurrencyInfo(1101)
+	-- texStr = ("\124T%s:12\124t %d"):format(tex, amount)
+	-- GameTooltip:AddDoubleLine(name, texStr, 1, 1, 0, 1, 1, 1)
 
 	GetActiveMissions()
 	GetBuildingData()

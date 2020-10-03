@@ -89,6 +89,7 @@ local ItemBlacklist = {
 ITEM BAR/BUTTON CONSTRUCT
 ##########################################################
 ]]--
+--print(GetNumQuestWatches())
 local ItemBar = _G["SVUI_QuestItemBar"];
 ItemBar.Buttons = {};
 
@@ -181,8 +182,8 @@ do
 		local shortestDistance = 62500
 		local closestQuestLink, closestQuestTexture
 		local activeQuestLink, activeQuestTexture
-
-		for index = 1, GetNumQuestWatches() do
+		local numQuestLogLeaderBoards = GetNumQuestLeaderBoards()
+		for index = 1, numQuestLogLeaderBoards() do
 			local questID, _, questIndex, _, _, isComplete = GetQuestWatchInfo(index)
 			if(questID and QuestHasPOIInfo(questID)) then
 				local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questIndex)
@@ -461,6 +462,7 @@ local function UpdateCachedQuests(needsSorting)
 	local HeadersCached = false;
 
 	wipe(QUESTS_BY_LOCATION)
+	
 
 	-- for i = 1, GetNumQuestWatches() do
 		-- local questID, _, questLogIndex, numObjectives, _, completed, _, _, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(i);
