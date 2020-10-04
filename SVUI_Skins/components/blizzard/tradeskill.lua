@@ -21,7 +21,7 @@ local function TradeSkillStyle()
 	if SV.db.Skins.blizzard.enable ~= true or SV.db.Skins.blizzard.tradeskill ~= true then
 		 return 
 	end
-print("hello jello")
+--print("hello jello")
 	--TradeSkillListScrollFrame:RemoveTextures()
 --	TradeSkillDetailScrollFrame:RemoveTextures()
 	--TradeSkillFrameInset:RemoveTextures()

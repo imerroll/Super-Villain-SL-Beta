@@ -104,7 +104,7 @@ local MMB_OnEnter = function(self)
 	if(not SV.db.Maps.minimapbar.mouseover or SV.db.Maps.minimapbar.styleType == "NOANCHOR") then return end
 	UIFrameFadeIn(SVUI_MiniMapButtonBar, 0.2, SVUI_MiniMapButtonBar:GetAlpha(), 1)
 	if self:GetName() ~= "SVUI_MiniMapButtonBar" then
-		self:SetBackdropBorderColor(.7, .7, 0)
+		--self:SetBackdropBorderColor(.7, .7, 0)
 	end
 end
 
@@ -112,7 +112,7 @@ local MMB_OnLeave = function(self)
 	if(not SV.db.Maps.minimapbar.mouseover or SV.db.Maps.minimapbar.styleType == "NOANCHOR") then return end
 	UIFrameFadeOut(SVUI_MiniMapButtonBar, 0.2, SVUI_MiniMapButtonBar:GetAlpha(), 0)
 	if self:GetName() ~= "SVUI_MiniMapButtonBar" then
-		self:SetBackdropBorderColor(0, 0, 0)
+		--self:SetBackdropBorderColor(0, 0, 0)
 	end
 end
 

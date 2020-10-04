@@ -22,7 +22,7 @@
         </FontHeight>
     </Font>
 
-    <Frame name="SVUI_SuperTitleFrame" frameStrata="BACKGROUND" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_SuperTitleFrame" frameStrata="BACKGROUND" hidden="true">
         <Size x="400" y="100"/>
         <Anchors>
             <Anchor point="LEFT" relativePoint="CENTER" x="150" y="-50" />
@@ -53,7 +53,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_CreditFrame" frameStrata="BACKGROUND" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_CreditFrame" frameStrata="BACKGROUND" hidden="true">
         <Size x="400" y="100"/>
         <Anchors>
             <Anchor point="LEFT" relativePoint="CENTER" x="200" y="-50" />
@@ -78,7 +78,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_DropdownFrame" frameStrata="DIALOG" hidden="true"  inherits="BackdropTemplate"/>
+    <Frame name="SVUI_DropdownFrame" frameStrata="DIALOG" hidden="true"/>
 
     <Frame name="SVUI_MailMinion" parent="InboxFrame" hidden="true">
         <Size x="150" y="25"/>
@@ -109,9 +109,9 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_RaidMarkFrame" frameStrata="DIALOG" hidden="true" inherits="BackdropTemplate" />
+    <Frame name="SVUI_RaidMarkFrame" frameStrata="DIALOG" hidden="true"/>
 
-    <Frame name="SVUI_LayoutPrecision" movable="true" hidden="true" frameStrata="DIALOG" inherits="BackdropTemplate">
+    <Frame name="SVUI_LayoutPrecision" movable="true" hidden="true" frameStrata="DIALOG">
         <Size x="200" y="144"/>
         <Anchors>
             <Anchor point="CENTER"/>
@@ -357,7 +357,7 @@
         </Scripts>
     </Frame>
 
-    <Frame name="SVUI_Layout" movable="true" hidden="true" frameStrata="DIALOG" inherits="BackdropTemplate">
+    <Frame name="SVUI_Layout" movable="true" hidden="true" frameStrata="DIALOG">
         <Size x="220" y="30"/>
         <Anchors>
             <Anchor point="CENTER">
@@ -434,7 +434,7 @@
         </Scripts>
     </Frame>
 
-    <Frame name="SVUI_GameMenuFrame" parent="GameMenuFrame" inherits="BackdropTemplate">
+    <Frame name="SVUI_GameMenuFrame" parent="GameMenuFrame" >
         <Layers>
             <Layer level="BACKGROUND" textureSubLevel="-7">
                 <Texture file="Interface\AddOns\SVUI_!Core\assets\backgrounds\DEFAULT">
@@ -471,7 +471,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_AFKFrame" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_AFKFrame" hidden="true" >
         <Layers>
             <Layer level="BACKGROUND" textureSubLevel="-7">
                 <Texture file="Interface\AddOns\SVUI_!Core\assets\backgrounds\DEFAULT">
@@ -509,7 +509,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_BoozedUpFrame" parent="UIParent" setAllPoints="true" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_BoozedUpFrame" parent="UIParent" setAllPoints="true" hidden="true" >
         <Frames>
             <PlayerModel name="$parentScreenEffect1" parentKey="ScreenEffect1" frameStrata="BACKGROUND" setAllPoints="true" />
             <PlayerModel name="$parentScreenEffect2" parentKey="ScreenEffect2" frameStrata="BACKGROUND">
@@ -538,9 +538,9 @@
 
     <StatusBar name="SVUI_ThreatOMeter" frameStrata="DIALOG" hidden="true" />
 
-    <Frame name="SVUI_ComixFrame" frameStrata="DIALOG" hidden="true"  inherits="BackdropTemplate"/>
+    <Frame name="SVUI_ComixFrame" frameStrata="DIALOG" hidden="true" />
 
-    <Frame name="SVUI_ComixPopup1" frameStrata="DIALOG" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_ComixPopup1" frameStrata="DIALOG" hidden="true" >
         <Size x="100" y="100"/>
         <Anchors>
             <Anchor point="CENTER" relativePoint="CENTER" x="0" y="0" />
@@ -552,7 +552,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_ComixPopup2" frameStrata="DIALOG" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_ComixPopup2" frameStrata="DIALOG" hidden="true" >
         <Size x="100" y="100"/>
         <Anchors>
             <Anchor point="BOTTOM" relativePoint="BOTTOM" x="0" y="100" />
@@ -564,7 +564,7 @@
         </Layers>
     </Frame>
 
-    <Frame name="SVUI_ComixPopup3" frameStrata="DIALOG" hidden="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_ComixPopup3" frameStrata="DIALOG" hidden="true" >
         <Size x="100" y="100"/>
         <Anchors>
             <Anchor point="CENTER" relativePoint="CENTER" x="0" y="0" />
@@ -589,7 +589,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_ScriptError" movable="true" hidden="true" frameStrata="DIALOG" inherits="BackdropTemplate">
+    <Frame name="SVUI_ScriptError" movable="true" hidden="true" frameStrata="DIALOG" >
         <Size x="484" y="550"/>
         <Anchors>
             <Anchor point="TOPLEFT" x="80" y="-80"/>
@@ -701,7 +701,7 @@
         </Scripts>
     </Frame>
 
-    <Frame name="SVUI_ProfileInterface" movable="true" hidden="true" frameStrata="DIALOG" inherits="BackdropTemplate">
+    <Frame name="SVUI_ProfileInterface" movable="true" hidden="true" frameStrata="DIALOG" >
         <Size x="484" y="550"/>
         <Anchors>
             <Anchor point="TOPLEFT" x="80" y="-80"/>

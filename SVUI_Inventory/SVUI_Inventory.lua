@@ -956,7 +956,12 @@ BAG CONTAINER CREATION
 ]]--
 local NEXT_ACTION_ALLOWED, NEXT_ACTION_TOGGLED = false, false;
 local NEXT_ACTION_FORCED, FORCED_CLOSED, FORCED_OPEN = false, false, false;
-
+local function CreateBackdrop(frame)
+   frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+		frame:SetBackdropColor(0.35,0.35,0.35,0.85)
+		frame:SetBackdropBorderColor(0,0,0,1)
+end
 do
 	local InventorySearch_OnReset = function(self)
 		self.button:Show()
@@ -1125,7 +1130,8 @@ do
 
 	function MOD:CreateMasterFrame()
 		local bagName = "SVUI_ContainerFrame";
-		local frame = CreateFrame("Button", "SVUI_ContainerFrame", SV.Screen);
+		local frame = CreateFrame("Button", "SVUI_ContainerFrame", SV.Screen,BackdropTemplateMixin and "BackdropTemplate");
+		CreateBackdrop(frame)
 		tinsert(UISpecialFrames, bagName);
 
 		frame:SetStyle("Frame", "Pattern")

@@ -988,14 +988,14 @@ end
 
 local function LoadSystemAlerts()
 	if not _G["SVUI_ConfigAlert"] then
-		local configAlert = CreateFrame("Frame", "SVUI_ConfigAlert", UIParent,BackdropTemplateMixin and "BackdropTemplate")
+		local configAlert = CreateFrame("Frame", "SVUI_ConfigAlert", UIParent)
 		configAlert:SetFrameStrata("TOOLTIP")
 		configAlert:SetFrameLevel(979)
 		configAlert:SetSize(300, 300)
 		configAlert:SetPoint("CENTER", 200, -150)
 		configAlert:Hide()
 
-		configAlert.bg = CreateFrame("Frame", nil, configAlert,BackdropTemplateMixin and "BackdropTemplate")
+		configAlert.bg = CreateFrame("Frame", nil, configAlert)
 		configAlert.bg:SetSize(300, 300)
 		configAlert.bg:SetPoint("CENTER")
 		configAlert.bg:SetFrameStrata("TOOLTIP")
@@ -1005,7 +1005,7 @@ local function LoadSystemAlerts()
 		bgtex:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Alert\SAVED-BG]])
 		SetConfigAlertAnim(configAlert.bg)
 
-		configAlert.fg = CreateFrame("Frame", nil, configAlert,BackdropTemplateMixin and "BackdropTemplate")
+		configAlert.fg = CreateFrame("Frame", nil, configAlert)
 		configAlert.fg:SetSize(300, 300)
 		configAlert.fg:SetPoint("CENTER", bgtex, "CENTER")
 		configAlert.fg:SetFrameStrata("TOOLTIP")

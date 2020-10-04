@@ -31,7 +31,7 @@ do
 		if next(contentFrameCache) then
 			frame = table.remove(contentFrameCache)
 		else
-			frame = CreateFrame("Button", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
+			frame = CreateFrame("Button", nil, UIParent)
 				--frame:SetWidth(320)
 				frame:SetHeight(18)
 				frame:SetHighlightTexture([[Interface\AddOns\SVUI_!Core\assets\textures\TITLE-HIGHLIGHT]], "ADD")

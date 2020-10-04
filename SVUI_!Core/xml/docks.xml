@@ -1,5 +1,5 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
-    <Frame name="SVUI_DockBarBottomLeft" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBarBottomLeft" frameStrata="BACKGROUND" >
         <Size y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
@@ -68,7 +68,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBottomLeft" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBottomLeft" frameStrata="BACKGROUND" >
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
             <Attribute name="buttonSize" type="number" value="22" />
@@ -95,7 +95,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBarBottomRight" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBarBottomRight" frameStrata="BACKGROUND" >
         <Size y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
@@ -164,7 +164,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBottomRight" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBottomRight" frameStrata="BACKGROUND" >
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
             <Attribute name="buttonSize" type="number" value="22" />
@@ -191,7 +191,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBarTopLeft" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBarTopLeft" frameStrata="BACKGROUND" >
         <Size y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
@@ -210,7 +210,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockTopLeft" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockTopLeft" frameStrata="BACKGROUND" >
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
             <Attribute name="buttonSize" type="number" value="22" />
@@ -237,7 +237,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBarTopRight" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBarTopRight" frameStrata="BACKGROUND" >
         <Size y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
@@ -256,7 +256,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockTopRight" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockTopRight" frameStrata="BACKGROUND" >
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
             <Attribute name="buttonSize" type="number" value="22" />
@@ -283,7 +283,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_DockBottomCenter" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockBottomCenter" frameStrata="BACKGROUND" >
         <Size x="500" y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />
@@ -294,7 +294,7 @@
         </Anchors>
     </Frame>
 
-    <Frame name="SVUI_DockTopCenter" frameStrata="BACKGROUND" inherits="BackdropTemplate">
+    <Frame name="SVUI_DockTopCenter" frameStrata="BACKGROUND" >
         <Size x="500" y="22"/>
         <Attributes>
             <Attribute name="spacingSize" type="number" value="4" />

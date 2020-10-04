@@ -37,7 +37,7 @@ do
 		if next(contentFrameCache) then
 			frame = table.remove(contentFrameCache)
 		else
-			frame = CreateFrame("Button", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
+			frame = CreateFrame("Button", nil, UIParent)
 				--frame:SetWidth(320)
 				frame:SetHeight(18)
 				frame:SetHighlightTexture([[Interface\AddOns\SVUI_!Core\assets\textures\TITLE-HIGHLIGHT]], "ADD")
@@ -50,7 +50,7 @@ do
 				check:Hide()
 			frame.check = check
 
-			local soundbutton = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+			local soundbutton = CreateFrame("Button", nil, frame)
 				soundbutton:SetWidth(16)
 				soundbutton:SetHeight(16)
 				soundbutton:SetPoint("RIGHT",frame,"RIGHT",-1,0)
@@ -234,7 +234,7 @@ do
 			frame.dropButton:SetParent(frame.Panel)
 		end
 
-		local soundbutton = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+		local soundbutton = CreateFrame("Button", nil, frame)
 			soundbutton:SetWidth(16)
 			soundbutton:SetHeight(16)
 			soundbutton:SetPoint("LEFT",frame.DLeft,"LEFT",26,1)

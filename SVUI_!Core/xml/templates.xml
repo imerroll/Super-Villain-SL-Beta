@@ -1,5 +1,5 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
-    <Slider name="SVUI_TinySliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true" inherits="BackdropTemplate">
+    <Slider name="SVUI_TinySliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true" >
       <Size>
         <AbsDimension x="100" y="6"/>
       </Size>
@@ -57,7 +57,7 @@
       </ThumbTexture>
     </Slider>
 
-    <Slider name="SVUI_HSliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true" inherits="BackdropTemplate">
+    <Slider name="SVUI_HSliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true" >
       <Size>
         <AbsDimension x="144" y="12"/>
       </Size>
@@ -118,7 +118,7 @@
       </ThumbTexture>
     </Slider>
 
-    <Slider name="SVUI_VSliderTemplate" orientation="VERTICAL" virtual="true" enableMouse="true" inherits="BackdropTemplate">
+    <Slider name="SVUI_VSliderTemplate" orientation="VERTICAL" virtual="true" enableMouse="true" >
       <Size>
         <AbsDimension x="12" y="144"/>
       </Size>
@@ -179,7 +179,7 @@
       </ThumbTexture>
     </Slider>
 
-    <Frame name="SVUI_ShadowTemplate" virtual="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_ShadowTemplate" virtual="true" >
         <Attributes>
             <Attribute name="shadowAlpha" type="number" value="0.5" />
         </Attributes>
@@ -214,7 +214,7 @@
         </Scripts>
     </Button>
 
-    <Frame name="SVUI_MovingPanelTemplate" virtual="true" movable="true" clampedToScreen="true" toplevel="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_MovingPanelTemplate" virtual="true" movable="true" clampedToScreen="true" toplevel="true" >
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture name="$parentBG" setAllPoints="true"/>
@@ -240,7 +240,7 @@
         </Frames>
     </Frame>
 
-    <Frame name="SVUI_MessagePanelTemplate" virtual="true" toplevel="true" inherits="BackdropTemplate">
+    <Frame name="SVUI_MessagePanelTemplate" virtual="true" toplevel="true" >
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture name="$parentBG" setAllPoints="true"/>

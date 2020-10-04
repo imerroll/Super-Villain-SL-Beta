@@ -178,8 +178,8 @@ end
 local function Constructor()
 	local name = "AceGUI30KeybindingButton" .. AceGUI:GetNextWidgetNum(Type)
 
-	local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
-	local button = CreateFrame("Button", name, frame, wowMoP and "UIPanelButtonTemplate" or "UIPanelButtonTemplate2",BackdropTemplateMixin and "BackdropTemplate")
+	local frame = CreateFrame("Frame", nil, UIParent)
+	local button = CreateFrame("Button", name, frame, wowMoP and "UIPanelButtonTemplate" or "UIPanelButtonTemplate2")
 
 	button:EnableMouse(true)
 	button:RegisterForClicks("AnyDown")
@@ -203,7 +203,7 @@ local function Constructor()
 	label:SetJustifyH("CENTER")
 	label:SetHeight(18)
 
-	local msgframe = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
+	local msgframe = CreateFrame("Frame", nil, UIParent)
 	msgframe:SetHeight(30)
 	msgframe:SetBackdrop(backdrop)
 	msgframe:SetBackdropColor(0,0,0)

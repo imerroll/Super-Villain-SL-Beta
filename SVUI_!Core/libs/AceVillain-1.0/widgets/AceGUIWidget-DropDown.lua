@@ -291,8 +291,8 @@ do
 		--frame:SetToplevel(true)
 
 		-- NOTE: The whole scroll frame code is copied from the AceGUI-3.0 widget ScrollFrame
-		local scrollFrame = CreateFrame("ScrollFrame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
-		local itemFrame = CreateFrame("Frame", nil, scrollFrame,BackdropTemplateMixin and "BackdropTemplate")
+		local scrollFrame = CreateFrame("ScrollFrame", nil, frame)
+		local itemFrame = CreateFrame("Frame", nil, scrollFrame)
 
 		self.scrollFrame = scrollFrame
 		self.itemFrame = itemFrame
@@ -652,8 +652,8 @@ do
 
 	local function Constructor()
 		local count = AceGUI:GetNextWidgetNum(widgetType)
-		local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
-		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate",BackdropTemplateMixin and "BackdropTemplate")
+		local frame = CreateFrame("Frame", nil, UIParent)
+		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate")
 
 		local self = {}
 		self.type = widgetType
@@ -717,7 +717,7 @@ do
 			SVUI.API:Set("PageButton", button, true)
 		end
 
-		local button_cover = CreateFrame("BUTTON",nil,self.frame,BackdropTemplateMixin and "BackdropTemplate")
+		local button_cover = CreateFrame("BUTTON",nil,self.frame)
 		button_cover.obj = self
 		button_cover:SetPoint("TOPLEFT",self.frame,"BOTTOMLEFT",0,25)
 		button_cover:SetPoint("BOTTOMRIGHT",self.frame,"BOTTOMRIGHT")

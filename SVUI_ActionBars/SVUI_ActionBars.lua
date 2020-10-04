@@ -76,7 +76,7 @@ LOCAL FUNCTIONS
 ##########################################################
 ]]--
 local function NewActionBar(barName)
-	local bar = CreateFrame("Frame", barName, UIParent, "SecureHandlerStateTemplate", BackdropTemplateMixin and "BackdropTemplate")
+	local bar = CreateFrame("Frame", barName, UIParent, "SecureHandlerStateTemplate")
 	if Masque then
 	    bar.MasqueGroup = Masque:Group(MODULE_NAME, barName)
 	end
@@ -1085,7 +1085,7 @@ CreateActionBars = function(self)
 			end
 		end
 
-		local bg = CreateFrame("Frame", nil, thisBar, BackdropTemplateMixin and "BackdropTemplate")
+		local bg = CreateFrame("Frame", nil, thisBar)
 		bg:SetAllPoints()
 		bg:SetFrameLevel(0)
 		thisBar:SetFrameLevel(5)
@@ -1207,7 +1207,7 @@ do
 	  stanceBar:SetPoint("BOTTOMRIGHT", self.MainAnchor, "TOPRIGHT", 0, 2);
 	  stanceBar:SetFrameLevel(5);
 
-	  local bg = CreateFrame("Frame", nil, stanceBar, BackdropTemplateMixin and "BackdropTemplate")
+	  local bg = CreateFrame("Frame", nil, stanceBar)
 	  bg:SetAllPoints();
 	  bg:SetFrameLevel(0);
 	  bg:SetStyle("Frame", "Transparent")
@@ -1323,7 +1323,7 @@ do
 
 		petBar:SetPoint("BOTTOMLEFT", self.MainAnchor, "TOPLEFT", 0, 2);
 		petBar:SetFrameLevel(5);
-		local bg = CreateFrame("Frame", nil, petBar, BackdropTemplateMixin and "BackdropTemplate")
+		local bg = CreateFrame("Frame", nil, petBar)
 		bg:SetAllPoints();
 		bg:SetFrameLevel(0);
 		bg:SetStyle("Frame", "Transparent")
@@ -1360,7 +1360,7 @@ do
 end
 
 local CreateExtraBar = function(self)
-	local specialBar = CreateFrame("Frame", "SVUI_SpecialAbility", SV.Screen, BackdropTemplateMixin and "BackdropTemplate")
+	local specialBar = CreateFrame("Frame", "SVUI_SpecialAbility", SV.Screen)
 	specialBar:SetPoint("BOTTOM", SV.Screen, "BOTTOM", 0, 360)
 	specialBar:SetSize(ExtraActionBarFrame:GetSize())
 	ExtraActionBarFrame:SetParent(specialBar)

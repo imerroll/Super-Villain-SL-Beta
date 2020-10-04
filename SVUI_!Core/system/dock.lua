@@ -285,7 +285,7 @@ local function ScreenBorderVisibility()
 end
 
 local function SetBasicBackdrop(frame)
-	local backdrop = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+	local backdrop = CreateFrame("Frame", nil, frame)
 	backdrop:InsetPoints(frame,4,4)
 	backdrop:SetFrameStrata("BACKGROUND")
 
@@ -358,7 +358,7 @@ end
 
 function MOD.SetThemedBackdrop(frame, forceTop)
 	local frameLevel = frame:GetFrameLevel()
-	local backdrop = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+	local backdrop = CreateFrame("Frame", nil, frame)
 	backdrop:SetAllPoints(frame)
 	backdrop:SetFrameStrata("BACKGROUND")
 	backdrop.forceTop = forceTop

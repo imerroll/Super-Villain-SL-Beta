@@ -216,7 +216,7 @@ SV.Allegiance         = UnitFactionGroup("player");
 SV.ClassRole          = "";
 SV.SpecificClassRole  = "NONE";
 
-SV.Screen = CreateFrame("Frame", "SVUIParent", UIParent,BackdropTemplateMixin and "BackdropTemplate");
+SV.Screen = CreateFrame("Frame", "SVUIParent", UIParent);
 SV.Screen:SetFrameLevel(UIParent:GetFrameLevel());
 SV.Screen:SetPoint("CENTER", UIParent, "CENTER");
 SV.Screen:SetSize(UIParent:GetSize());
