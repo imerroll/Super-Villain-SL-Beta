@@ -584,11 +584,11 @@ local ContainerFrame_UpdateLayout = function(self)
 			if(self.Bags[bagID]) then
 				self.Bags[bagID].numSlots = numSlots;
 
-				for i = 1, MAX_CONTAINER_ITEMS do
-					if(self.Bags[bagID][i]) then
-						self.Bags[bagID][i]:Hide();
-					end
-				end
+				-- for i = 1, MAX_CONTAINER_ITEMS do
+					-- if(self.Bags[bagID][i]) then
+						-- self.Bags[bagID][i]:Hide();
+					-- end
+				-- end
 			end
 
 			if(isBank) then

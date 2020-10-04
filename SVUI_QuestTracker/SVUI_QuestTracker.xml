@@ -40,12 +40,13 @@
         </Anchors>
     </Frame>
 
-    <Script file="Loader.lua"/>
-    <Script file='SVUI_QuestTracker.lua'/>
-    <Script file='components\popups.lua'/>
+   <!-- <Script file="Loader.lua"/>
+    <Script file='SVUI_QuestTracker.lua'/>-->
+	<Script file='ObjectiveFrame.lua'/>
+   <!-- <Script file='components\popups.lua'/>
     <Script file='components\active.lua'/>
     <Script file='components\scenario.lua'/>
     <Script file='components\quests.lua'/>
     <Script file='components\bonus.lua'/>
-    <Script file='components\achievements.lua'/>
+    <Script file='components\achievements.lua'/>-->
 </Ui>

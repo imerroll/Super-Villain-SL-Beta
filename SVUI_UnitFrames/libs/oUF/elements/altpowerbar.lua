@@ -33,19 +33,19 @@ local Toggler = function(self, event, unit)
 	if(unit ~= self.unit) or not unit then return end
 	local altpowerbar = self.AltPowerBar
 
-	local barType, minPower, _, _, _, hideFromOthers = UnitAlternatePowerInfo(unit)
-	if(barType and (not hideFromOthers or unit == 'player' or self.realUnit == 'player')) then
-		self:RegisterEvent('UNIT_POWER_UPDATE', UpdatePower)
-		self:RegisterEvent('UNIT_MAXPOWER', UpdatePower)
+	-- local barType, minPower, _, _, _, hideFromOthers = UnitAlternatePowerInfo(unit)
+	-- if(barType and (not hideFromOthers or unit == 'player' or self.realUnit == 'player')) then
+		-- self:RegisterEvent('UNIT_POWER_UPDATE', UpdatePower)
+		-- self:RegisterEvent('UNIT_MAXPOWER', UpdatePower)
 
-		ForceUpdate(altpowerbar)
-		altpowerbar:Show()
-	else
-		self:UnregisterEvent('UNIT_POWER_UPDATE', UpdatePower)
-		self:UnregisterEvent('UNIT_MAXPOWER', UpdatePower)
+		-- ForceUpdate(altpowerbar)
+		-- altpowerbar:Show()
+	-- else
+		-- self:UnregisterEvent('UNIT_POWER_UPDATE', UpdatePower)
+		-- self:UnregisterEvent('UNIT_MAXPOWER', UpdatePower)
 
-		altpowerbar:Hide()
-	end
+		-- altpowerbar:Hide()
+	-- end
 end
 
 local Enable = function(self, unit)
