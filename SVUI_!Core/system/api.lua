@@ -61,6 +61,26 @@ local SVUILib = Librarian("Registry");
 local MOD = SV:NewPackage("API", L["API"]);
 --[[
 ##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
+--[[
+##########################################################
 LOCALS
 ##########################################################
 ]]--
@@ -103,6 +123,7 @@ MOD.Concepts = {};
 UI SCALING
 ##########################################################
 ]]--
+
 local function ScreenUpdate()
     local rez = GetCVar("gxWindowedResolution")
 	--print(GetCVar("gxWindowedResolution"))
@@ -468,6 +489,7 @@ local HookPanelBorderColor = function(self,r,g,b,a)
     end
     if self.Shadow then
         local alpha = self.Shadow:GetAttribute("shadowAlpha") or 0.5
+		ColorObjectOnly(self.Shadow,0,0,0,0.5)
        -- self.Shadow:SetBackdropBorderColor(r,g,b,alpha)
     end
 end
@@ -510,6 +532,7 @@ local HookCustomBackdrop_TypeA = function(self)
                     self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", offset, -offset)
                 end
             end
+			ColorObject(self.Panel,0,0,0,1,1,1,1,1)
            -- self.Panel:SetBackdrop(bdSet)
            -- self.Panel:SetBackdropBorderColor(0,0,0,1)
         else
@@ -534,6 +557,7 @@ local HookCustomBackdrop_TypeA = function(self)
                         bottom = offset,
                     },
                 };
+				ColorObject(self.Panel,0,0,0,0,0,0,0,0)
                 --self.Panel:SetBackdrop(bdSet)
                -- self.Panel:SetBackdropBorderColor(0,0,0,1)
                 if(not self.Panel:GetAttribute("panelLocked")) then
@@ -548,6 +572,7 @@ local HookCustomBackdrop_TypeA = function(self)
         local panelColor = SV.media.color[colorID];
         if(panelColor) then
             --self.Panel:SetBackdropColor(panelColor[1], panelColor[2], panelColor[3], panelColor[4] or 1)
+			ColorObjectOnly(self.Panel,0, 0, 0, 0)
         end
     end
 end
@@ -557,6 +582,7 @@ local HookCustomBackdrop_TypeB = function(self)
         local bgid = self.Panel:GetAttribute("panelID")
         local bdSet = SV.media.backdrop[bgid]
         if(bdSet) then
+		ColorObject(self,0,0,0,0,0,0,1,1)
            -- self:SetBackdrop(bdSet)
           --  self:SetBackdropBorderColor(0,0,0,1)
         else
@@ -581,8 +607,9 @@ local HookCustomBackdrop_TypeB = function(self)
                         bottom = offset,
                     },
                 };
-                self:SetBackdrop(bdSet)
-                self:SetBackdropBorderColor(0,0,0,1)
+				ColorObject(self,0,0,0,0,1,1,1,1)
+                --self:SetBackdrop(bdSet)
+                --self:SetBackdropBorderColor(0,0,0,1)
             end
         end
 
@@ -590,6 +617,7 @@ local HookCustomBackdrop_TypeB = function(self)
         local panelColor = SV.media.color[colorID];
         if(panelColor) then
           --  self:SetBackdropColor(panelColor[1], panelColor[2], panelColor[3], panelColor[4] or 1)
+		  ColorObjectOnly(self,0, 0, 0, 0)
         end
     end
 end
@@ -741,7 +769,8 @@ local SetFrameBorderColor = function(self, r, g, b, setPrevious, reset)
     elseif(reset) then
         r,g,b = unpack(SV.media.color[self.Panel.__previous])
     end
-    self.Panel.Shadow:SetBackdropBorderColor(r, g, b)
+   -- self.Panel.Shadow:SetBackdropBorderColor(r, g, b)
+	ColorObjectOnly(self.Panel.Shadow,0,0,0,1)
 end
 
 local ShowAlertFlash = function(self)
@@ -870,9 +899,16 @@ function MOD:APPLY(frame, templateName, underlay, padding, xOffset, yOffset, def
 
   -- if(panel:GetBackdrop()) then
        if(underlay) then
+	   ColorObject(frame,0,0,0,0,0,0,0,1)
         --  panel:SetBackdropColor(bgColor[1],bgColor[2],bgColor[3],bgColor[4] or 1)
          --  panel:SetBackdropBorderColor(borderColor[1],borderColor[2],borderColor[3],borderColor[4] or 1)
        else
+	   MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+		MyObject:SetAllPoints(frame)
+		MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+			insets = {top = -2, left = -2, bottom = -2, right = -2}})
+		MyObject:SetBackdropColor(0,0,1,0.005)
+		MyObject:SetBackdropBorderColor(1,0,0,0)
           -- local bd = panel:GetBackdrop()
            -- frame:SetBackdrop(bd)
            -- frame:SetBackdropColor(bgColor[1],bgColor[2],bgColor[3],bgColor[4] or 1)
@@ -885,6 +921,7 @@ function MOD:APPLY(frame, templateName, underlay, padding, xOffset, yOffset, def
           --  hooksecurefunc(panel, "SetBackdropBorderColor", HookPanelBorderColor)
           --  hooksecurefunc(frame, "SetBackdropBorderColor", HookBackdropBorderColor)
             if(underlay) then
+			ColorObject(frame,0,0,0,0,0,0,0,0)
                -- frame:SetBackdrop(nil)
                -- frame.SetBackdrop = panel.SetBackdrop
               -- hooksecurefunc(frame, "SetBackdrop", HookBackdrop)
@@ -912,6 +949,7 @@ function MOD:APPLY(frame, templateName, underlay, padding, xOffset, yOffset, def
 
         local alpha = panel.Shadow:GetAttribute("shadowAlpha") or 0.5
        -- panel.Shadow:SetBackdropBorderColor(0,0,0,alpha)
+	   ColorObject(panel.Shadow,0,0,0,0,0,0,0,1)
 
         local level = panel.Shadow:GetFrameLevel() - 1
         if(level >= 0) then
@@ -1044,6 +1082,7 @@ MOD.Methods["LiteButton"] = function(self, frame, inverse, xOffset, yOffset, def
     end
 
     self:APPLY(frame, "Lite", inverse, 1, x, y)
+	ColorObject(frame,0,0,0,0,0,0,0,0)
     --frame:SetBackdropColor(0,0,0,0)
     --frame:SetBackdropBorderColor(0,0,0,0)
     CommonButtonSettings(frame, true)
@@ -1232,6 +1271,7 @@ local SetPanelColor = function(self, ...)
                 if(SV.media.color[arg1]) then
                     local t = SV.media.color[arg1]
                     --self:SetBackdropColor(t[1], t[2], t[3], t[4])
+					ColorObjectOnly(self,0.25,0.25,0.25,0)
                 end
             end
         end
@@ -1239,6 +1279,8 @@ local SetPanelColor = function(self, ...)
         local t = SV.media.color[arg1]
         self.Panel:SetAttribute("panelColor", arg1)
         --self:SetBackdropColor(t[1], t[2], t[3], t[4])
+		---ab bg
+		ColorObjectOnly(self,0.25,0.25,0.25,0)
     elseif(arg1 and type(arg1) == "number") then
         self:SetBackdropColor(...)
     end
@@ -1303,12 +1345,24 @@ local function FrameTemplateUpdates()
                 end
                 if(panelColor) then
                    -- frame:SetBackdropColor(panelColor[1], panelColor[2], panelColor[3], panelColor[4] or 1)
+				  
+				  MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+					MyObject:SetAllPoints(frame)
+					MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+					insets = {top = -2, left = -2, bottom = -2, right = -2}})
+					MyObject:SetBackdropColor(0,0,0.1,0)
                 end
                 if(SV.media.bordercolor[panelID]) then
                     local borderColor = SV.media.bordercolor[panelID]
+					--ColorObject(Object,0,0,0,0,0,0,0,0)
                    -- frame:SetBackdropBorderColor(borderColor[1], borderColor[2], borderColor[3], borderColor[4] or 1)
-                else
+               -- else
                   --  frame:SetBackdropBorderColor(0,0,0,1)
+				  MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+					MyObject:SetAllPoints(frame)
+					MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+					insets = {top = -2, left = -2, bottom = -2, right = -2}})
+					MyObject:SetBackdropColor(0,0,0,0)
                 end
             end
             if(frame.TextureNeedsUpdate and frame.Panel.Skin) then
@@ -1534,28 +1588,34 @@ STYLING CONCEPTS
 
 local Button_OnEnter = function(self)
    -- self:SetBackdropColor(0.1, 0.8, 0.8)
+   ColorObjectOnly(self,0.1, 0.8, 0.8,1)
 end
 
 local Button_OnLeave = function(self)
    -- self:SetBackdropColor(unpack(SV.media.color.button))
+   ColorObjectOnly(self,0.1, 0.4, 0.4,0)
 end
 
 local ConceptButton_OnEnter = function(self)
    -- self:SetBackdropBorderColor(0.1, 0.8, 0.8)
+   ColorObjectOnly(self,0.1, 0.8, 0.8,0)
 end
 
 local ConceptButton_OnLeave = function(self)
    -- self:SetBackdropBorderColor(0,0,0,1)
+   ColorObjectOnly(self,0, 0, 0,0)
 end
 
 local Tab_OnEnter = function(self)
     self.backdrop:SetPanelColor("highlight")
-    self.backdrop:SetBackdropBorderColor(0.1, 0.8, 0.8)
+	ColorObjectOnly(self.backdrop,0.1, 0.8, 0.8,1)
+   -- self.backdrop:SetBackdropBorderColor(0.1, 0.8, 0.8)
 end
 
 local Tab_OnLeave = function(self)
     self.backdrop:SetPanelColor("button")
-    self.backdrop:SetBackdropBorderColor(0,0,0,1)
+    --self.backdrop:SetBackdropBorderColor(0,0,0,1)
+	ColorObjectOnly(self.backdrop,0, 0, 0,1)
 end
 
 local _hook_DropDownButton_SetPoint = function(self, _, _, _, _, _, breaker)
@@ -1566,6 +1626,7 @@ end
 
 local _hook_Tooltip_OnShow = function(self)
     self:SetBackdrop(SV.media.backdrop.tooltip)
+	ColorObjectOnly(self.backdrop,0.1, 0.8, 0.8,1)
 end
 
 MOD.Concepts["Frame"] = function(self, adjustable, frame, template, noStripping, padding, xOffset, yOffset)
@@ -1681,8 +1742,8 @@ MOD.Concepts["ItemButton"] = function(self, adjustable, frame, noScript)
             frame:HookScript("OnLeave", Button_OnLeave)
         else
             self.Methods["Frame"](self, frame, false, "Inset", true, 1, -1, -1)
-            -- frame:HookScript("OnEnter", ConceptButton_OnEnter)
-            -- frame:HookScript("OnLeave", ConceptButton_OnLeave)
+             frame:HookScript("OnEnter", ConceptButton_OnEnter)
+             frame:HookScript("OnLeave", ConceptButton_OnLeave)
         end
     end
 
@@ -2245,6 +2306,7 @@ MOD.Concepts["Alert"] = function(self, defaultStyle, frame, arg)
             -- bgFile = TEMPLATE.BG
         -- })
         -- alertpanel:SetBackdropColor(r,g,b)
+		ColorObjectOnly(alertpanel,0,0,0,1)
 
         --[[ LEFT ]]--
         alertpanel.left = alertpanel:CreateTexture(nil, "BORDER")
