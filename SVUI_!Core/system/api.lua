@@ -487,7 +487,7 @@ local HookPanelBorderColor = function(self,r,g,b,a)
     end
     if self.Shadow then
         local alpha = self.Shadow:GetAttribute("shadowAlpha") or 0.5
-		ColorObjectOnly(self.Shadow,0,0,0,0.5)
+		ColorObjectOnly(self.Shadow,0,0,0,1)
        -- self.Shadow:SetBackdropBorderColor(r,g,b,alpha)
     end
 end

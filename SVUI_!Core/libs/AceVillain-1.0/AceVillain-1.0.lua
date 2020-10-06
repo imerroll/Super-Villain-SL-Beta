@@ -230,7 +230,7 @@ do
 		if next(DropDownCache) then
 			frame = table.remove(DropDownCache)
 		else
-			frame = CreateFrame("Frame", nil, UIParent)
+			frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
 				frame:SetClampedToScreen(true)
 				frame:SetWidth(320)
 				frame:SetBackdrop(frameBackdrop)
@@ -260,7 +260,7 @@ do
 			frame.ClearFrames = ClearFrames
 			frame.contentRepo = {} -- store all our frames in here so we can get rid of them later
 
-			local slider = CreateFrame("Slider", nil, scrollframe)
+			local slider = CreateFrame("Slider", nil, scrollframe, BackdropTemplateMixin and "BackdropTemplate")
 				slider:SetOrientation("VERTICAL")
 				slider:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -2, -13)
 				slider:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -2, 12)

@@ -56,7 +56,7 @@
             <TileSize val="0" />
             <BackgroundInsets left="0" right="0" top="0" bottom="0" />
             <Color r="0.2" g="0.2" b="0.2" a="1" />
-            <BorderColor r="0" g="0" b="0" a="1" />
+            <BorderColor r="1" g="1" b="1" a="1" />
         </Backdrop>
 		
   
@@ -462,38 +462,38 @@
             <BorderColor r="0" g="0" b="0" a="1" />
         </Backdrop>
         <Layers>
-            <Layer level="BACKGROUND" textureSubLevel="2">
-                <Texture parentKey="TopLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-TOPLEFT">
+           <Layer level="BACKGROUND" textureSubLevel="2">
+                <Texture parentKey="TopLeft" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
                         <Anchor point="TOPRIGHT" relativePoint="TOP" />
                         <Anchor point="BOTTOMLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                    <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="TopRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-TOPRIGHT">
+                <Texture parentKey="TopRight" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" />
                         <Anchor point="TOPLEFT" relativePoint="TOP" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                    <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="BottomLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-BOTTOMLEFT">
+                <Texture parentKey="BottomLeft" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
                         <Anchor point="TOPLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-BOTTOMRIGHT">
+                <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" />
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
                         <Anchor point="TOPRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0" g="0" b="0" a="1" />
                 </Texture>
             </Layer>
         </Layers>
@@ -515,44 +515,45 @@
             <EdgeSize val="2" />
             <TileSize val="0" />
             <BackgroundInsets left="1" right="1" top="1" bottom="1" />
-            <Color r="1" g="1" b="1" a="0.4" />
-            <BorderColor r="0" g="0" b="0" a="1" />
+            <Color r="1" g="1" b="1" a="1" />
+            <BorderColor r="1" g="1" b="1" a="1" />
         </Backdrop>
         <Layers>
-            <Layer level="BACKGROUND" textureSubLevel="2">
-                <Texture parentKey="TopLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-TOPLEFT">
+           <Layer level="BACKGROUND" textureSubLevel="2">
+                <Texture parentKey="TopLeft" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
                         <Anchor point="TOPRIGHT" relativePoint="TOP" />
                         <Anchor point="BOTTOMLEFT" relativePoint="LEFT" />
                     </Anchors>
-                     <Color r="1" g="1" b="1" a="0.4" />
+                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="TopRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-TOPRIGHT">
+                <Texture parentKey="TopRight" nonBlocking="true" file="IInterface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" />
                         <Anchor point="TOPLEFT" relativePoint="TOP" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                     <Color r="1" g="1" b="1" a="0.4" />
+                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="BottomLeft" nonBlocking="false" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMLEFT">
+                <Texture parentKey="BottomLeft" nonBlocking="false" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
                         <Anchor point="TOPLEFT" relativePoint="LEFT" />
                     </Anchors>
-                     <Color r="1" g="1" b="1" a="0.4" />
+                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
-                <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMRIGHT">
+                <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\BUTTONS\WHITE8X8">
                     <Anchors>
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" />
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
                         <Anchor point="TOPRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="1" g="1" b="1" a="0.4" />
+                    <Color r="0" g="0" b="0" a="1" />
                 </Texture>
             </Layer>
+			
         </Layers>
         <Frames>
             <Frame parentKey="Shadow" inherits="SVUI_ShadowTemplate" />

@@ -179,7 +179,7 @@
       </ThumbTexture>
     </Slider>
 
-    <Frame name="SVUI_ShadowTemplate" virtual="true" >
+    <Frame name="SVUI_ShadowTemplate" virtual="true" inherits="BackdropTemplate">
         <Attributes>
             <Attribute name="shadowAlpha" type="number" value="0.5" />
         </Attributes>
