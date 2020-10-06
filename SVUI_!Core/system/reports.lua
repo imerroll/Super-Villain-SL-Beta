@@ -62,6 +62,24 @@ local SVLib = _G.Librarian("Registry")
 local LSM = _G.LibStub("LibSharedMedia-3.0")
 local LDB = LibStub("LibDataBroker-1.1", true)
 local MOD = SV:NewPackage("Reports", L["Informative Panels"]);
+--[[
+##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
 
 MOD.Sockets = {};
 MOD.Plugins = {};
@@ -242,6 +260,7 @@ local function GetDataSlot(parent, index)
 			-- })
 		-- slot.barframe:SetBackdropColor(0, 0, 0, 0.5)
 		-- slot.barframe:SetBackdropBorderColor(0, 0, 0, 0.8)
+		ColorObject(slot.barframe,0,0,0,0.5,0,0,0,0.8)
 
 		slot.barframe.icon = CreateFrame("Frame", nil, slot.barframe)
 		slot.barframe.icon:SetPoint("TOPLEFT", slot, "TOPLEFT", 0, 6)

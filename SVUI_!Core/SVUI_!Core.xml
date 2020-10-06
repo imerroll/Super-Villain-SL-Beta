@@ -57,9 +57,9 @@
 	
 	<Script file="system\_reports\experience.lua"/>
 	<Script file="system\_reports\friends.lua"/>
-    <Script file="system\_reports\artifact.lua"/>
+   <!-- <Script file="system\_reports\artifact.lua"/>-->
     <Script file="system\_reports\gold.lua"/>
-    <Script file="system\_reports\tokens.lua"/>
+    <!--<Script file="system\_reports\tokens.lua"/>-->
     <Script file="system\_reports\guild.lua"/>
     <!--<Script file="system\_reports\reputation_new.lua"/>-->
 	<Script file="system\_reports\reputation.lua"/>

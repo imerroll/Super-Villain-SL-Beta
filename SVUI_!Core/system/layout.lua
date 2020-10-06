@@ -58,16 +58,14 @@ ObjectBG
 local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
-	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
-        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
 	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
 	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
 end
 local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
-	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
-        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
 	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
 end
 

@@ -56,6 +56,24 @@ MountListener.favorites = false
 LOCAL FUNCTIONS
 ##########################################################
 ]]--
+--[[
+##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
 local function CacheMounts()
 	return C_MountJournal.GetMountIDs()
 end
@@ -270,6 +288,7 @@ local _hook_SetChecked = function(self, checked)
         r,g,b = self:GetCheckedTexture():GetVertexColor()
     end
    -- self:SetBackdropBorderColor(r,g,b)
+   ColorObject(self,0,0,0,0,0,0,0,0)
 end
 
 local function CreateMountCheckBox(name, parent)
@@ -289,6 +308,7 @@ local function CreateMountCheckBox(name, parent)
             -- bottom = 0,
         -- },
     -- });
+	ColorObject(frame,0,0,0,0,0,0,0,0)
 
     if(frame.Left) then frame.Left:SetAlpha(0) end
     if(frame.Middle) then frame.Middle:SetAlpha(0) end
@@ -384,6 +404,7 @@ local function InitializeLetsRide()
 		buttonBar["GROUND"]:SetPoint("BOTTOMLEFT", buttonBar, "BOTTOMLEFT", 6, 4)
 		-- buttonBar["GROUND"]:SetBackdropColor(0.2, 0.7, 0.1, 0.25)
 		-- buttonBar["GROUND"]:SetBackdropBorderColor(0, 0, 0, 1)
+		ColorObject(buttonBar["GROUND"],0.2,0.7,0.1,0.25,0,0,0,1)
 		buttonBar["GROUND"]:GetCheckedTexture():SetVertexColor(0.2, 0.7, 0.1, 1)
 		buttonBar["GROUND"].key = "GROUND"
 		buttonBar["GROUND"]:SetChecked(false)
@@ -396,6 +417,7 @@ local function InitializeLetsRide()
 		buttonBar["FLYING"]:SetPoint("BOTTOMLEFT", buttonBar["GROUND"], "BOTTOMRIGHT", 2, 0)
 		-- buttonBar["FLYING"]:SetBackdropColor(1, 1, 0.2, 0.25)
 		-- buttonBar["FLYING"]:SetBackdropBorderColor(0, 0, 0, 1)
+		ColorObject(buttonBar["FLYING"],1,1,0.2,0.25,0,0,0,1)
 		buttonBar["FLYING"]:GetCheckedTexture():SetVertexColor(1, 1, 0.2, 1)
 		buttonBar["FLYING"].key = "FLYING"
 		buttonBar["FLYING"]:SetChecked(false)
@@ -408,6 +430,7 @@ local function InitializeLetsRide()
 		buttonBar["SWIMMING"]:SetPoint("BOTTOMLEFT", buttonBar["FLYING"], "BOTTOMRIGHT", 2, 0)
 		-- buttonBar["SWIMMING"]:SetBackdropColor(0.2, 0.42, 0.76, 0.25)
 		-- buttonBar["SWIMMING"]:SetBackdropBorderColor(0, 0, 0, 1)
+		ColorObject(buttonBar["SWIMMING"],0.2,0.42,0.76,0.25,0,0,0,1)
 		buttonBar["SWIMMING"]:GetCheckedTexture():SetVertexColor(0.2, 0.42, 0.76, 1)
 		buttonBar["SWIMMING"].key = "SWIMMING"
 		buttonBar["SWIMMING"]:SetChecked(false)
@@ -418,6 +441,7 @@ local function InitializeLetsRide()
 		buttonBar["SPECIAL"] = CreateMountCheckBox(("%s_SPECIAL"):format(barName), buttonBar)
 		buttonBar["SPECIAL"]:SetSize(width,height)
 		buttonBar["SPECIAL"]:SetPoint("BOTTOMLEFT", buttonBar["SWIMMING"], "BOTTOMRIGHT", 2, 0)
+		ColorObject(buttonBar["SWIMMING"],0.7,0.1,0.1,0.25,0,0,0,1)
 		-- buttonBar["SPECIAL"]:SetBackdropColor(0.7, 0.1, 0.1, 0.25)
 		-- buttonBar["SPECIAL"]:SetBackdropBorderColor(0, 0, 0, 1)
 		buttonBar["SPECIAL"]:GetCheckedTexture():SetVertexColor(0.7, 0.1, 0.1, 1)

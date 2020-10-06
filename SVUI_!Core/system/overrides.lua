@@ -69,6 +69,24 @@ local AUTOROLL_DE = true;
 MIRROR BARS
 ##########################################################
 ]]--
+--[[
+##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
 local MirrorBarEventFrame = CreateFrame("Frame", nil)
 local mirrorYOffset={
 	["BREATH"] = 96,
@@ -774,6 +792,7 @@ EventFunc["LOOT_READY"] = function(autoLoot)
 	titleWidth = titleWidth + 5;
 	--local color = ITEM_QUALITY_COLORS[iQuality]
 	--SVUI_LootFrame:SetBackdropBorderColor(color.r, color.g, color.b, .8)
+	ColorObject(SVUI_LootFrame,0,0,0,1,0.15,0.25,1,0.8)
 	SVUI_LootFrame:SetWidth(max(nameWidth, titleWidth))
 end
 
@@ -1121,6 +1140,7 @@ local function SetOverrides()
 
 	ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
 	--ColorPickerFrame:SetBackdrop(SV.media.backdrop.darkened)
+	ColorObjectOnly(ColorPickerFrame,0,0,0,1)
 	ColorPickerFrame:SetFrameLevel(999)
 
 	AlterBlizzMainBar()

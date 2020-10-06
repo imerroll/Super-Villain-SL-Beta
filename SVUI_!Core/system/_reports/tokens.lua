@@ -127,22 +127,22 @@ local MISC_TOKENS={
 local sort_menu_fn = function(a,b) return a.text < b.text end;
 
 local Tokens_OnEvent = function(self, event, ...)
-	if(not IsLoggedIn() or (not self)) then return end
-	local id = self.TokenKey or 738;
-	local _, current, tex = GetCurrencyInfo(id)
-	local currentText = TEXT_PATTERN:format(tex, current);
-	self.text:SetText(currentText)
+	-- if(not IsLoggedIn() or (not self)) then return end
+	-- local id = self.TokenKey or 738;
+	-- local _, current, tex = GetCurrencyInfo(id)
+	-- local currentText = TEXT_PATTERN:format(tex, current);
+	-- self.text:SetText(currentText)
 end
 
 local function AddToTokenMenu(self, id, key)
-	local itemName, _, tex, _, _, _, _ = GetCurrencyInfo(id)
-	local fn = function()
-		Reports.Accountant["tokens"][playerName][key] = id;
-		self.TokenKey = id
-		Tokens_OnEvent(self)
-	end
-	local nextIndex = #self.InnerData+1;
-	self.InnerData[nextIndex] = {text = itemName, icon = "\124T"..tex..":12\124t ", func = fn};
+	-- local itemName, _, tex, _, _, _, _ = GetCurrencyInfo(id)
+	-- local fn = function()
+		-- Reports.Accountant["tokens"][playerName][key] = id;
+		-- self.TokenKey = id
+		-- Tokens_OnEvent(self)
+	-- end
+	--local nextIndex = #self.InnerData+1;
+	--self.InnerData[nextIndex] = {text = itemName, icon = "\124T"..tex..":12\124t ", func = fn};
 end
 
 local function AddTokenTableToMenu(self,ttable,key)

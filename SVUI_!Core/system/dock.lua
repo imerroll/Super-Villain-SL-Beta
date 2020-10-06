@@ -54,6 +54,24 @@ MOD.Border = {};
 LOCALS
 ##########################################################
 ]]--
+--[[
+##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
 -- SV.SpecialFX:Register("dragging_highlight", [[Spells\Warlock_bodyofflames_medium_state_shoulder_right_purple.m2]], -20, 50, 20, -50, 0.35, 0, 0.5)
 SV.SpecialFX:Register("dragging_highlight_top", [[Spells\Creature_spellportal_blue_clickable.m2]], 0, 0, 0, -80, 0.8, 0, 2.5)
 SV.SpecialFX:Register("dragging_highlight_bottom", [[Spells\Creature_spellportal_blue_clickable.m2]], 0, 80, 0, 0, 0.9, 0, -0.25)
@@ -423,6 +441,7 @@ function MOD:SetBorderTheme()
 	-- })
 	--self.Border.Top:SetBackdropColor(unpack(SV.media.color.dark))
 	--self.Border.Top:SetBackdropBorderColor(0,0,0,1)
+	ColorObject(self.Border.Top,0,0,0,1,0,0,0,1)
 	self.Border.Top:SetFrameLevel(0)
 	self.Border.Top:SetFrameStrata('BACKGROUND')
 	self.Border.Top:SetScript("OnShow", function(self)
@@ -443,6 +462,7 @@ function MOD:SetBorderTheme()
 	-- })
 	-- self.Border.Bottom:SetBackdropColor(unpack(SV.media.color.dark))
 	-- self.Border.Bottom:SetBackdropBorderColor(0,0,0,1)
+	ColorObject(self.Border.Bottom,0,0,0,1,0,0,0,1)
 	self.Border.Bottom:SetFrameLevel(0)
 	self.Border.Bottom:SetFrameStrata('BACKGROUND')
 	self.Border.Bottom:SetScript("OnShow", function(self)
@@ -699,8 +719,9 @@ do
 						if(dividerList[i]) then
 							dividerList[i]:SetAlpha(0)
 							dividerList[i]:SetWidth(1)
-							dividerList[i]:SetBackdropColor(0, 0.5, 1, 1)
-							dividerList[i]:SetBackdropBorderColor(0, 1, 1, 1)
+							-- dividerList[i]:SetBackdropColor(0, 0.5, 1, 1)
+							-- dividerList[i]:SetBackdropBorderColor(0, 1, 1, 1)
+							ColorObject(dividerList[i],0,0.5,1,1,0,1,1,1)
 						end
 					end
 				end
@@ -730,8 +751,10 @@ do
 							end
 							divider:SetAlpha(0)
 							divider:SetWidth(1)
-							divider:SetBackdropColor(0, 0.5, 1, 1)
-							divider:SetBackdropBorderColor(0, 1, 1, 1)
+							-- divider:SetBackdropColor(0, 0.5, 1, 1)
+							-- divider:SetBackdropBorderColor(0, 1, 1, 1)
+							ColorObject(divider,0,0.5,1,1,0,1,1,1)
+							
 						end
 					end
 				end
@@ -977,8 +1000,9 @@ local function CreateDivider(parent)
 	local frame = CreateFrame("Frame", nil, parent,BackdropTemplateMixin and "BackdropTemplate");
 	frame:SetSize(1,size);
 	frame:SetStyle("!_Frame", "Transparent")
-	frame:SetBackdropColor(0, 0.5, 1)
-	frame:SetBackdropBorderColor(0, 1, 1)
+	-- frame:SetBackdropColor(0, 0.5, 1)
+	-- frame:SetBackdropBorderColor(0, 1, 1)
+	ColorObject(frame,0,0.5,1,1,0,1,1,1)
 	frame:SetAlpha(0)
 	return frame;
 end
