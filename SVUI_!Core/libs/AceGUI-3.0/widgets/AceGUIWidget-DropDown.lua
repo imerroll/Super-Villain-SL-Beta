@@ -1,4 +1,4 @@
---[[ $Id: AceGUIWidget-DropDown.lua 1237 2020-07-17 22:50:38Z nevcairiel $ ]]--
+--[[ $Id: AceGUIWidget-DropDown.lua 1209 2019-06-24 21:01:01Z nevcairiel $ ]]--
 local AceGUI = LibStub("AceGUI-3.0")
 
 -- Lua APIs
@@ -39,7 +39,7 @@ end
 
 do
 	local widgetType = "Dropdown-Pullout"
-	local widgetVersion = 4
+	local widgetVersion = 3
 
 	--[[ Static data ]]--
 
@@ -258,7 +258,7 @@ do
 
 	local function Constructor()
 		local count = AceGUI:GetNextWidgetNum(widgetType)
-		local frame = CreateFrame("Frame", "AceGUI30Pullout"..count, UIParent, BackdropTemplateMixin and "BackdropTemplate" or nil)
+		local frame = CreateFrame("Frame", "AceGUI30Pullout"..count, UIParent, BackdropTemplateMixin and "BackdropTemplate")
 		local self = {}
 		self.count = count
 		self.type = widgetType
@@ -300,8 +300,8 @@ do
 		--frame:SetToplevel(true)
 
 		-- NOTE: The whole scroll frame code is copied from the AceGUI-3.0 widget ScrollFrame
-		local scrollFrame = CreateFrame("ScrollFrame", nil, frame)
-		local itemFrame = CreateFrame("Frame", nil, scrollFrame)
+		local scrollFrame = CreateFrame("ScrollFrame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+		local itemFrame = CreateFrame("Frame", nil, scrollFrame, BackdropTemplateMixin and "BackdropTemplate")
 
 		self.scrollFrame = scrollFrame
 		self.itemFrame = itemFrame
@@ -309,7 +309,7 @@ do
 		scrollFrame.obj = self
 		itemFrame.obj = self
 
-		local slider = CreateFrame("Slider", "AceGUI30PulloutScrollbar"..count, scrollFrame, BackdropTemplateMixin and "BackdropTemplate" or nil)
+		local slider = CreateFrame("Slider", "AceGUI30PulloutScrollbar"..count, scrollFrame, BackdropTemplateMixin and "BackdropTemplate")
 		slider:SetOrientation("VERTICAL")
 		slider:SetHitRectInsets(0, 0, -10, 0)
 		slider:SetBackdrop(sliderBackdrop)
@@ -356,7 +356,7 @@ end
 
 do
 	local widgetType = "Dropdown"
-	local widgetVersion = 35
+	local widgetVersion = 34
 
 	--[[ Static data ]]--
 
@@ -465,7 +465,6 @@ do
 		self:SetWidth(200)
 		self:SetLabel()
 		self:SetPulloutWidth(nil)
-		self.list = {}
 	end
 
 	-- exported, AceGUI callback
@@ -536,7 +535,9 @@ do
 
 	-- exported
 	local function SetValue(self, value)
-		self:SetText(self.list[value] or "")
+		if self.list then
+			self:SetText(self.list[value] or "")
+		end
 		self.value = value
 	end
 
@@ -600,7 +601,7 @@ do
 		end
 	end
 	local function SetList(self, list, order, itemType)
-		self.list = list or {}
+		self.list = list
 		self.pullout:Clear()
 		self.hasClose = nil
 		if not list then return end
@@ -628,8 +629,10 @@ do
 
 	-- exported
 	local function AddItem(self, value, text, itemType)
-		self.list[value] = text
-		AddListItem(self, value, text, itemType)
+		if self.list then
+			self.list[value] = text
+			AddListItem(self, value, text, itemType)
+		end
 	end
 
 	-- exported
@@ -654,8 +657,8 @@ do
 
 	local function Constructor()
 		local count = AceGUI:GetNextWidgetNum(widgetType)
-		local frame = CreateFrame("Frame", nil, UIParent)
-		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate")
+		local frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
+		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate", BackdropTemplateMixin and "BackdropTemplate")
 
 		local self = {}
 		self.type = widgetType
@@ -710,7 +713,7 @@ do
 		button:SetScript("OnLeave",Control_OnLeave)
 		button:SetScript("OnClick",Dropdown_TogglePullout)
 
-		local button_cover = CreateFrame("BUTTON",nil,self.frame)
+		local button_cover = CreateFrame("BUTTON",nil,self.frame, BackdropTemplateMixin and "BackdropTemplate")
 		self.button_cover = button_cover
 		button_cover.obj = self
 		button_cover:SetPoint("TOPLEFT",self.frame,"BOTTOMLEFT",0,25)

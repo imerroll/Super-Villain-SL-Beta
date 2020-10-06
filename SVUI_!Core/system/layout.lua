@@ -50,6 +50,26 @@ GET ADDON DATA
 local SV = select(2, ...);
 local L = SV.L;
 local SVUILib = Librarian("Registry");
+--[[
+##########################################################
+ObjectBG
+##########################################################
+]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+        insets = {top = -2, left = -2, bottom = -2, right = -2}})
+	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+end
 
 local Layout = _G["SVUI_Layout"];
 Layout.Frames = {};
@@ -610,7 +630,8 @@ function Layout:Movable_OnDragStop()
 end
 
 function Layout:Movable_OnShow()
-	self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+	--self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+	ColorObject(self,0.25,0.55,1,0.45,0, 0.25, 1, 0.5)
 end
 
 function Layout:Movable_OnEnter()
@@ -619,7 +640,8 @@ function Layout:Movable_OnEnter()
 	self:SetAlpha(1)
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(0, 1, 1)
-		self:SetBackdropBorderColor(0, 0.7, 1, 1)
+		--self:SetBackdropBorderColor(0, 0.7, 1, 1)
+		ColorObject(self,0.65,0.55,1,0.45,0, 0.25, 1, 0.5)
 	end
 	UpdateFrameTarget = self;
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-ON]])
@@ -631,7 +653,8 @@ function Layout:Movable_OnLeave()
 	if TheHand.UserHeld then return end
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(1, 1, 1)
-		self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+		--self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
+		ColorObject(self,0.25,0.55,1,0.45,0, 0.25, 1, 0.5)
 	end
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-OFF]])
 	TheHand:Hide()
@@ -652,7 +675,8 @@ function Layout:Movable_OnMouseDown(button)
 		if(not SVUI_LayoutPrecision) then return end;
 		CurrentFrameTarget = self
 		self.text:SetTextColor(0.2, 1, 0)
-		self:SetBackdropBorderColor(0, 1, 0, 1)
+		--self:SetBackdropBorderColor(0, 1, 0, 1)
+		ColorObject(self,0,0,0,0,0, 1, 0, 1)
 		Layout:Movable_OnUpdate()
 		SVUI_LayoutPrecision:Show()
 	end
@@ -1264,6 +1288,7 @@ local function InitializeMovables()
 	    },
 	});
 	CLOAKED_BG:SetBackdropColor(0,0,0,0.15);
+	--ColorObject(Layout,0,0,0,0.15,0,0,0,1)
 
 	Layout.Anchors = SV.db.LAYOUT or {}
 	--Layout:SetPanelColor("yellow")
@@ -1361,7 +1386,8 @@ local function InitializeMovables()
 	SVUI_LayoutPrecision:SetScript("OnHide", function()
 		if(not CurrentFrameTarget) then return end
 		CurrentFrameTarget.text:SetTextColor(0.8, 0.4, 0)
-		CurrentFrameTarget:SetBackdropBorderColor(0.8, 0.4, 0)
+		--CurrentFrameTarget:SetBackdropBorderColor(0.8, 0.4, 0)
+		ColorObject(CurrentFrameTarget,0,0,0,0,0.8, 0.4, 0,1)
 		CurrentFrameTarget = nil
 	end)
 

@@ -129,7 +129,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local function Constructor()
-	local frame = CreateFrame("Button", nil, UIParent)
+	local frame = CreateFrame("Button", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
 	frame:Hide()
 
 	frame:EnableMouse(true)

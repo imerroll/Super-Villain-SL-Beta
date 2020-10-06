@@ -2,7 +2,7 @@
 TabGroup Container
 Container that uses tabs on top to switch between groups.
 -------------------------------------------------------------------------------]]
-local Type, Version = "TabGroup", 37
+local Type, Version = "TabGroup", 36
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
 if not AceGUI or (AceGUI:GetWidgetVersion(Type) or 0) >= Version then return end
 
@@ -103,7 +103,7 @@ local methods = {
 
 	["CreateTab"] = function(self, id)
 		local tabname = ("AceGUITabGroup%dTab%d"):format(self.num, id)
-		local tab = CreateFrame("Button", tabname, self.border, "OptionsFrameTabButtonTemplate")
+		local tab = CreateFrame("Button", tabname, self.border, "OptionsFrameTabButtonTemplate", BackdropTemplateMixin and "BackdropTemplate")
 		tab.obj = self
 		tab.id = id
 
@@ -304,7 +304,7 @@ local PaneBackdrop  = {
 
 local function Constructor()
 	local num = AceGUI:GetNextWidgetNum(Type)
-	local frame = CreateFrame("Frame",nil,UIParent)
+	local frame = CreateFrame("Frame",nil,UIParent, BackdropTemplateMixin and "BackdropTemplate")
 	frame:SetHeight(100)
 	frame:SetWidth(100)
 	frame:SetFrameStrata("FULLSCREEN_DIALOG")
@@ -316,14 +316,14 @@ local function Constructor()
 	titletext:SetHeight(18)
 	titletext:SetText("")
 
-	local border = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate" or nil)
+	local border = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
 	border:SetPoint("TOPLEFT", 1, -27)
 	border:SetPoint("BOTTOMRIGHT", -1, 3)
 	border:SetBackdrop(PaneBackdrop)
 	border:SetBackdropColor(0.1, 0.1, 0.1, 0.5)
 	border:SetBackdropBorderColor(0.4, 0.4, 0.4)
 
-	local content = CreateFrame("Frame", nil, border)
+	local content = CreateFrame("Frame", nil, border, BackdropTemplateMixin and "BackdropTemplate")
 	content:SetPoint("TOPLEFT", 10, -7)
 	content:SetPoint("BOTTOMRIGHT", -10, 7)
 
