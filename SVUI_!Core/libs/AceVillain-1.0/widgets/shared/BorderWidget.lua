@@ -41,7 +41,7 @@ do
 		if next(contentFrameCache) then
 			frame = table.remove(contentFrameCache)
 		else
-			frame = CreateFrame("Button", nil, UIParent)
+			frame = CreateFrame("Button", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 				--frame:SetWidth(320)
 				frame:SetHeight(18)
 				frame:SetHighlightTexture([[Interface\AddOns\SVUI_!Core\assets\textures\TITLE-HIGHLIGHT]], "ADD")
@@ -193,7 +193,7 @@ do
 
 	local function SetDropDownStyle(self, xTopleft, yTopleft, xBottomright, yBottomright)
 		self:RemoveTextures()
-		self:SetStyle("Frame", "Window")
+		self:SetStyle("Frame", "Transparent")
 		self.Panel:SetPoint("TOPLEFT", self, "TOPLEFT", xTopleft, yTopleft)
 		self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", xBottomright, yBottomright)
 	end

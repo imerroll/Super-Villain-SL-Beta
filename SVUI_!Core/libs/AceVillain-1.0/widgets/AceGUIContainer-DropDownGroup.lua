@@ -99,14 +99,14 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local PaneBackdrop  = {
-	bgFile = "Interface\BUTTONS\WHITE8X8",
+	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
 	edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 	tile = false, edgeSize = 1,
 	insets = { left = 0, right = 0, top = 0, bottom = 0 }
 }
 
 local function Constructor()
-	local frame = CreateFrame("Frame")
+	local frame = CreateFrame("Frame",BackdropTemplateMixin and "BackdropTemplate",BackdropTemplateMixin and "BackdropTemplate")
 	frame:SetHeight(100)
 	frame:SetWidth(100)
 	frame:SetFrameStrata("FULLSCREEN_DIALOG")
@@ -133,7 +133,7 @@ local function Constructor()
 	border:SetBackdropBorderColor(0.4,0.4,0.4)
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, border)
+	local content = CreateFrame("Frame", nil, border,BackdropTemplateMixin and "BackdropTemplate")
 	content:SetPoint("TOPLEFT", 10, -10)
 	content:SetPoint("BOTTOMRIGHT", -10, 10)
 

@@ -492,7 +492,7 @@ end
 
 function SV.Setup:BarLayout(style, preserve)
 	if(not SV.ActionBars) then return end
-	preset_barstyle = style or "default";
+	preset_barstyle = style or "twosmall";
 
 	if not preserve then
 		SV:ResetData("ActionBars")
@@ -550,7 +550,7 @@ function SV.Setup:EZDefault()
 	self:ColorTheme("default", true);
 	self:UnitframeLayout("default", true);
 	self:GroupframeLayout("default", true);
-	self:BarLayout("default", true);
+	self:BarLayout("twosmall", true);
 	self:Auralayout("default", true);
 
 	SV.db.FunStuff.comix = '1';
@@ -601,7 +601,7 @@ function SV.Setup:Minimalist()
 	self:ColorTheme("classy", true);
 	self:UnitframeLayout("compact", true);
 	self:GroupframeLayout("grid", true);
-	self:BarLayout("default", true);
+	self:BarLayout("twosmall", true);
 	self:Auralayout("default", true);
 
 	SV.db.general.comix = false;

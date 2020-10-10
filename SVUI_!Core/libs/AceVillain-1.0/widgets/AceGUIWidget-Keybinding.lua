@@ -164,7 +164,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local backdrop  = {
-	bgFile = "Interface\BUTTONS\WHITE8X8",
+	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
 	edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 	tile = true, tileSize = 16, edgeSize = 8,
 	insets = { left = 2, right = 2, top = 2, bottom = 2 }
@@ -178,8 +178,8 @@ end
 local function Constructor()
 	local name = "AceGUI30KeybindingButton" .. AceGUI:GetNextWidgetNum(Type)
 
-	local frame = CreateFrame("Frame", nil, UIParent)
-	local button = CreateFrame("Button", name, frame, wowMoP and "UIPanelButtonTemplate" or "UIPanelButtonTemplate2")
+	local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
+	local button = CreateFrame("Button", name, frame, wowMoP and "UIPanelButtonTemplate" or "UIPanelButtonTemplate2",BackdropTemplateMixin and "BackdropTemplate")
 
 	button:EnableMouse(true)
 	button:RegisterForClicks("AnyDown")
@@ -203,7 +203,7 @@ local function Constructor()
 	label:SetJustifyH("CENTER")
 	label:SetHeight(18)
 
-	local msgframe = CreateFrame("Frame", nil, UIParent)
+	local msgframe = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 	msgframe:SetHeight(30)
 	msgframe:SetBackdrop(backdrop)
 	msgframe:SetBackdropColor(0,0,0)

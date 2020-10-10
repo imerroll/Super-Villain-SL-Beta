@@ -3,19 +3,7 @@
 
 local AceGUI = LibStub("AceGUI-3.0")
 local Media = LibStub("LibSharedMedia-3.0")
-local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
-	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
-	MyObject:SetAllPoints(Object)
-	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
-	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
-end
-local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
-	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
-	MyObject:SetAllPoints(Object)
-	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
-end
+
 local AceVillain = LibStub("AceVillain-1.0")
 
 do
@@ -50,7 +38,7 @@ do
 		if next(contentFrameCache) then
 			frame = table.remove(contentFrameCache)
 		else
-			frame = CreateFrame("Button", nil, UIParent)
+			frame = CreateFrame("Button", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 				--frame:SetWidth(320)
 				frame:SetHeight(18)
 				frame:SetHighlightTexture([[Interface\AddOns\SVUI_!Core\assets\textures\TITLE-HIGHLIGHT]], "ADD")
@@ -120,11 +108,10 @@ do
 		self.frame.text:SetText(text or "")
 		local background = self.list[text] ~= text and self.list[text] or Media:Fetch('background',text)
 
-		-- self.frame.displayButton:SetBackdrop({bgFile = background,
-			-- edgeFile = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
-			-- edgeSize = 1,
-			-- insets = { left = 1, right = 1, top = 1, bottom = 1 }})
-			ColorObject(self.frame.displayButton,0,0,0,0,0,0,0,0)
+		self.frame.displayButton:SetBackdrop({bgFile = background,
+			edgeFile = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
+			edgeSize = 1,
+			insets = { left = 1, right = 1, top = 1, bottom = 1 }})
 	end
 
 	local function SetLabel(self, text) -- Set the text for the label.
@@ -145,12 +132,10 @@ do
 		self.disabled = disabled
 		if disabled then
 			self.frame:Disable()
-			--self.frame.displayButton:SetBackdropColor(.2,.2,.2,1)
-			ColorObject(self.frame.displayButton,0.2,0.2,0.2,1,0,0,0,0)
+			self.frame.displayButton:SetBackdropColor(.2,.2,.2,1)
 		else
 			self.frame:Enable()
-			--self.frame.displayButton:SetBackdropColor(1,1,1,1)
-			ColorObject(self.frame.displayButton,1,1,1,1,0,0,0,0)
+			self.frame.displayButton:SetBackdropColor(1,1,1,1)
 		end
 	end
 
@@ -212,7 +197,7 @@ do
 
 	local function SetDropDownStyle(self, xTopleft, yTopleft, xBottomright, yBottomright)
 		self:RemoveTextures()
-		self:SetStyle("Frame", "Window")
+		self:SetStyle("Frame", "Transparent")
 		self.Panel:SetPoint("TOPLEFT", self, "TOPLEFT", xTopleft, yTopleft)
 		self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", xBottomright, yBottomright)
 	end

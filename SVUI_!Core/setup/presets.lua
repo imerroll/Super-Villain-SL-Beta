@@ -376,43 +376,25 @@ local function LoadPresetData()
 		["bars"] = {
 			["link"] = "ActionBars",
 			["default"] = {
-				-- ["Bar1"] = {
-					-- buttonsize = 32
-				-- },
-				-- ["Bar2"] = {
-					-- enable = true
-				-- },
-				-- ["Bar3"] = {
-					-- buttons = 6,
-					-- buttonspacing = 2,
-					-- buttonsPerRow = 6,
-					-- buttonsize = 32
-				-- },
-				-- ["Bar5"] = {
-					-- buttons = 6,
-					-- buttonspacing = 2,
-					-- buttonsPerRow = 6,
-					-- buttonsize = 32
-				-- }
 				["Bar1"] = {
 					buttonsize = 32
 				},
 				["Bar2"] = {
-					enable = true,
-					buttonsize = 32
+					enable = false
 				},
 				["Bar3"] = {
-					buttons = 12,
+					buttons = 6,
 					buttonspacing = 2,
 					buttonsPerRow = 6,
 					buttonsize = 32
 				},
 				["Bar5"] = {
-					buttons = 12,
+					buttons = 6,
 					buttonspacing = 2,
 					buttonsPerRow = 6,
 					buttonsize = 32
 				}
+				
 			},
 			["onebig"] = {
 				["Bar1"] = {

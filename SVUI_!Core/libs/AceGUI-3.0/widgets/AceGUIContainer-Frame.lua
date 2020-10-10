@@ -1,7 +1,7 @@
 --[[-----------------------------------------------------------------------------
 Frame Container
 -------------------------------------------------------------------------------]]
-local Type, Version = "Frame", 26
+local Type, Version = "Frame", 27
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
 if not AceGUI or (AceGUI:GetWidgetVersion(Type) or 0) >= Version then return end
 
@@ -179,7 +179,7 @@ local PaneBackdrop  = {
 }
 
 local function Constructor()
-	local frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
+	local frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate" or nil)
 	frame:Hide()
 
 	frame:EnableMouse(true)
@@ -194,14 +194,14 @@ local function Constructor()
 	frame:SetScript("OnHide", Frame_OnClose)
 	frame:SetScript("OnMouseDown", Frame_OnMouseDown)
 
-	local closebutton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate", BackdropTemplateMixin and "BackdropTemplate")
+	local closebutton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
 	closebutton:SetScript("OnClick", Button_OnClick)
 	closebutton:SetPoint("BOTTOMRIGHT", -27, 17)
 	closebutton:SetHeight(20)
 	closebutton:SetWidth(100)
 	closebutton:SetText(CLOSE)
 
-	local statusbg = CreateFrame("Button", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local statusbg = CreateFrame("Button", nil, frame, BackdropTemplateMixin and "BackdropTemplate" or nil)
 	statusbg:SetPoint("BOTTOMLEFT", 15, 15)
 	statusbg:SetPoint("BOTTOMRIGHT", -132, 15)
 	statusbg:SetHeight(24)
@@ -225,7 +225,7 @@ local function Constructor()
 	titlebg:SetWidth(100)
 	titlebg:SetHeight(40)
 
-	local title = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local title = CreateFrame("Frame", nil, frame)
 	title:EnableMouse(true)
 	title:SetScript("OnMouseDown", Title_OnMouseDown)
 	title:SetScript("OnMouseUp", MoverSizer_OnMouseUp)
@@ -248,7 +248,7 @@ local function Constructor()
 	titlebg_r:SetWidth(30)
 	titlebg_r:SetHeight(40)
 
-	local sizer_se = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local sizer_se = CreateFrame("Frame", nil, frame)
 	sizer_se:SetPoint("BOTTOMRIGHT")
 	sizer_se:SetWidth(25)
 	sizer_se:SetHeight(25)
@@ -272,7 +272,7 @@ local function Constructor()
 	local x = 0.1 * 8/17
 	line2:SetTexCoord(0.05 - x, 0.5, 0.05, 0.5 + x, 0.05, 0.5 - x, 0.5 + x, 0.5)
 
-	local sizer_s = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local sizer_s = CreateFrame("Frame", nil, frame)
 	sizer_s:SetPoint("BOTTOMRIGHT", -25, 0)
 	sizer_s:SetPoint("BOTTOMLEFT")
 	sizer_s:SetHeight(25)
@@ -280,7 +280,7 @@ local function Constructor()
 	sizer_s:SetScript("OnMouseDown", SizerS_OnMouseDown)
 	sizer_s:SetScript("OnMouseUp", MoverSizer_OnMouseUp)
 
-	local sizer_e = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local sizer_e = CreateFrame("Frame", nil, frame)
 	sizer_e:SetPoint("BOTTOMRIGHT", 0, 25)
 	sizer_e:SetPoint("TOPRIGHT")
 	sizer_e:SetWidth(25)
@@ -289,7 +289,7 @@ local function Constructor()
 	sizer_e:SetScript("OnMouseUp", MoverSizer_OnMouseUp)
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local content = CreateFrame("Frame", nil, frame)
 	content:SetPoint("TOPLEFT", 17, -27)
 	content:SetPoint("BOTTOMRIGHT", -17, 40)
 

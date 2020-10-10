@@ -161,7 +161,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local function SetHeadingStyle(frame)
-	local backdrop = CreateFrame("Frame", nil, frame)
+	local backdrop = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	backdrop:SetPoint("TOP", frame, "TOP", 0, 12)
 	backdrop:SetWidth(100)
 	backdrop:SetHeight(24)
@@ -198,7 +198,7 @@ local function SetHeadingStyle(frame)
 end
 
 local function Constructor()
-	local frame = CreateFrame("Frame", nil, UIParent)
+	local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 	frame:Hide()
 
 	frame:EnableMouse(true)
@@ -214,7 +214,7 @@ local function Constructor()
 		frame:SetStyle("Frame", "Window2")
 	end
 
-	local closebutton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
+	local closebutton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate",BackdropTemplateMixin and "BackdropTemplate")
 	closebutton:SetScript("OnClick", Button_OnClick)
 	closebutton:SetPoint("BOTTOMRIGHT", -27, 17)
 	closebutton:SetHeight(20)
@@ -225,7 +225,7 @@ local function Constructor()
 		closebutton:SetStyle("Button", 0, 0, "red")
 	end
 
-	local statusbg = CreateFrame("Button", nil, frame)
+	local statusbg = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	statusbg:SetPoint("BOTTOMLEFT", 15, 15)
 	statusbg:SetPoint("BOTTOMRIGHT", -132, 15)
 	statusbg:SetHeight(24)
@@ -241,7 +241,7 @@ local function Constructor()
 
 	local titlebg = SetHeadingStyle(frame)
 
-	local title = CreateFrame("Frame", nil, frame)
+	local title = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	title:EnableMouse(true)
 	title:SetFrameLevel(titlebg:GetFrameLevel() + 20)
 	title:SetScript("OnMouseDown", Title_OnMouseDown)
@@ -251,7 +251,7 @@ local function Constructor()
 	local titletext = title:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	titletext:SetPoint("TOP", titlebg, "TOP", 0, -8)
 
-	local sizer_se = CreateFrame("Frame", nil, frame)
+	local sizer_se = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	sizer_se:SetPoint("BOTTOMRIGHT")
 	sizer_se:SetWidth(25)
 	sizer_se:SetHeight(25)
@@ -259,7 +259,7 @@ local function Constructor()
 	sizer_se:SetScript("OnMouseDown",SizerSE_OnMouseDown)
 	sizer_se:SetScript("OnMouseUp", LayoutSizer_OnMouseUp)
 
-	local sizer_s = CreateFrame("Frame", nil, frame)
+	local sizer_s = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	sizer_s:SetPoint("BOTTOMRIGHT", -25, 0)
 	sizer_s:SetPoint("BOTTOMLEFT")
 	sizer_s:SetHeight(25)
@@ -267,7 +267,7 @@ local function Constructor()
 	sizer_s:SetScript("OnMouseDown", SizerS_OnMouseDown)
 	sizer_s:SetScript("OnMouseUp", LayoutSizer_OnMouseUp)
 
-	local sizer_e = CreateFrame("Frame", nil, frame)
+	local sizer_e = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	sizer_e:SetPoint("BOTTOMRIGHT", 0, 25)
 	sizer_e:SetPoint("TOPRIGHT")
 	sizer_e:SetWidth(25)
@@ -276,7 +276,7 @@ local function Constructor()
 	sizer_e:SetScript("OnMouseUp", LayoutSizer_OnMouseUp)
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, frame)
+	local content = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 	content:SetPoint("TOPLEFT", 17, -27)
 	content:SetPoint("BOTTOMRIGHT", -17, 40)
 

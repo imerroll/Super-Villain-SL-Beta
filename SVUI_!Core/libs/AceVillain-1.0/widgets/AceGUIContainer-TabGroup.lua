@@ -103,7 +103,7 @@ local methods = {
 
 	["CreateTab"] = function(self, id)
 		local tabname = ("AceGUITabGroup%dTab%d"):format(self.num, id)
-		local tab = CreateFrame("Button", tabname, self.border, "OptionsFrameTabButtonTemplate")
+		local tab = CreateFrame("Button", tabname, self.border, "OptionsFrameTabButtonTemplate",BackdropTemplateMixin and "BackdropTemplate")
 		tab.obj = self
 		tab.id = id
 		if(tab.RemoveTextures) then
@@ -300,7 +300,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local PaneBackdrop  = {
-	bgFile = "Interface\BUTTONS\WHITE8X8",
+	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
 	edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 	tile = false, edgeSize = 1,
 	insets = { left = 0, right = 0, top = 0, bottom = 0 }
@@ -308,7 +308,7 @@ local PaneBackdrop  = {
 
 local function Constructor()
 	local num = AceGUI:GetNextWidgetNum(Type)
-	local frame = CreateFrame("Frame",nil,UIParent)
+	local frame = CreateFrame("Frame",nil,UIParent,BackdropTemplateMixin and "BackdropTemplate")
 	frame:SetHeight(100)
 	frame:SetWidth(100)
 	frame:SetFrameStrata("FULLSCREEN_DIALOG")
@@ -327,7 +327,7 @@ local function Constructor()
 	border:SetBackdropColor(0.1, 0.1, 0.1, 0.5)
 	border:SetBackdropBorderColor(0.4, 0.4, 0.4)
 
-	local content = CreateFrame("Frame", nil, border)
+	local content = CreateFrame("Frame", nil, border,BackdropTemplateMixin and "BackdropTemplate")
 	content:SetPoint("TOPLEFT", 10, -7)
 	content:SetPoint("BOTTOMRIGHT", -10, 7)
 

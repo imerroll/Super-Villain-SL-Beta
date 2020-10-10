@@ -61,7 +61,7 @@ do
 
 	-- create or retrieve BaseFrame
 	function AceVillain:GetBaseFrame()
-		local frame = CreateFrame("Frame", nil, UIParent)
+		local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 		frame:SetHeight(44)
 		frame:SetWidth(320)
 		frame:SetPoint("CENTER", UIParent, "CENTER")
@@ -110,7 +110,7 @@ do
 			text:SetText("")
 		frame.text = text
 
-		local dropButton = CreateFrame("Button", nil, frame)
+		local dropButton = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 			dropButton:SetWidth(24)
 			dropButton:SetHeight(24)
 			dropButton:SetPoint("TOPRIGHT", DRight, "TOPRIGHT", -16, -18)
@@ -128,7 +128,7 @@ do
 	function AceVillain:GetBaseFrameWithWindow()
 		local frame = self:GetBaseFrame()
 
-		local displayButton = CreateFrame("Button", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+		local displayButton = CreateFrame("Button", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 			displayButton:SetHeight(42)
 			displayButton:SetWidth(42)
 			displayButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 1, -2)
@@ -148,7 +148,7 @@ end
 do
 
 	local sliderBackdrop = {
-		["bgFile"] = [[Interface\BUTTONS\WHITE8X8]],
+		["bgFile"] = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\TRANSPARENT]],
 		["edgeFile"] = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
 		["tile"] = false,
 		["edgeSize"] = 1,
@@ -230,19 +230,19 @@ do
 		if next(DropDownCache) then
 			frame = table.remove(DropDownCache)
 		else
-			frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
+			frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 				frame:SetClampedToScreen(true)
 				frame:SetWidth(320)
 				frame:SetBackdrop(frameBackdrop)
 				frame:SetFrameStrata("TOOLTIP")
 				frame:EnableMouseWheel(true)
 
-			local contentframe = CreateFrame("Frame", nil, frame)
+			local contentframe = CreateFrame("Frame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 				contentframe:SetWidth(316)
 				contentframe:SetHeight(0)
 			frame.contentframe = contentframe
 
-			local scrollframe = CreateFrame("ScrollFrame", nil, frame)
+			local scrollframe = CreateFrame("ScrollFrame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
 				scrollframe:SetWidth(316)
 				scrollframe:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -13)
 				scrollframe:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -2, 12)
@@ -260,7 +260,7 @@ do
 			frame.ClearFrames = ClearFrames
 			frame.contentRepo = {} -- store all our frames in here so we can get rid of them later
 
-			local slider = CreateFrame("Slider", nil, scrollframe, BackdropTemplateMixin and "BackdropTemplate")
+			local slider = CreateFrame("Slider", nil, scrollframe,BackdropTemplateMixin and "BackdropTemplate")
 				slider:SetOrientation("VERTICAL")
 				slider:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -2, -13)
 				slider:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -2, 12)

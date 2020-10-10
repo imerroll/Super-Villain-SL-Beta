@@ -164,17 +164,17 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local function Constructor()
-	local frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
+	local frame = CreateFrame("Frame", nil, UIParent)
 	local num = AceGUI:GetNextWidgetNum(Type)
 
-	local scrollframe = CreateFrame("ScrollFrame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local scrollframe = CreateFrame("ScrollFrame", nil, frame)
 	scrollframe:SetPoint("TOPLEFT")
 	scrollframe:SetPoint("BOTTOMRIGHT")
 	scrollframe:EnableMouseWheel(true)
 	scrollframe:SetScript("OnMouseWheel", ScrollFrame_OnMouseWheel)
 	scrollframe:SetScript("OnSizeChanged", ScrollFrame_OnSizeChanged)
 
-	local scrollbar = CreateFrame("Slider", ("AceConfigDialogScrollFrame%dScrollBar"):format(num), scrollframe, "UIPanelScrollBarTemplate", BackdropTemplateMixin and "BackdropTemplate")
+	local scrollbar = CreateFrame("Slider", ("AceConfigDialogScrollFrame%dScrollBar"):format(num), scrollframe, "UIPanelScrollBarTemplate")
 	scrollbar:SetPoint("TOPLEFT", scrollframe, "TOPRIGHT", 4, -16)
 	scrollbar:SetPoint("BOTTOMLEFT", scrollframe, "BOTTOMRIGHT", 4, 16)
 	scrollbar:SetMinMaxValues(0, 1000)
@@ -190,7 +190,7 @@ local function Constructor()
 	scrollbg:SetColorTexture(0, 0, 0, 0.4)
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, scrollframe, BackdropTemplateMixin and "BackdropTemplate")
+	local content = CreateFrame("Frame", nil, scrollframe)
 	content:SetPoint("TOPLEFT")
 	content:SetPoint("TOPRIGHT")
 	content:SetHeight(400)

@@ -202,14 +202,14 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local SliderBackdrop  = {
-	bgFile = [[Interface\BUTTONS\WHITE8X8]],
+	bgFile = [[Interface\AddOns\SVUI_!Core\assets\backgrounds\TRANSPARENT]],
 	edgeFile = [[Interface\AddOns\SVUI_!Core\assets\borders\DEFAULT]],
 	tile = false, edgeSize = 1,
 	insets = { left = 0, right = 0, top = 0, bottom = 0 }
 }
 
 local function Constructor()
-	local frame = CreateFrame("Frame", nil, UIParent)
+	local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 
 	frame:EnableMouse(true)
 	frame:SetScript("OnMouseDown", Frame_OnMouseDown)

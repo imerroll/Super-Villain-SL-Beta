@@ -476,14 +476,14 @@ SV.Options.args.primary = {
 					desc = L["Run the installation process."],
 					func = function() SV.Setup:LoadInstaller() SV:ToggleConfig() end
 				},
-				Themes = {
-					order = 2,
-					width = "full",
-					type = "execute",
-					name = L["Themes"],
-					desc = L["Select an available theme."],
-					func = function() SV.Setup:SelectTheme() SV:ToggleConfig() end
-				},
+				-- Themes = {
+					-- order = 2,
+					-- width = "full",
+					-- type = "execute",
+					-- name = L["Themes"],
+					-- desc = L["Select an available theme."],
+					-- func = function() SV.Setup:SelectTheme() SV:ToggleConfig() end
+				-- },
 				Backdrops = {
 					order = 3,
 					width = "full",

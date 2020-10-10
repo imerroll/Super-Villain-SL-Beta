@@ -43,7 +43,7 @@ do
 
 	--[[ Static data ]]--
 	local backdrop  = {
-		bgFile = "Interface\BUTTONS\WHITE8X8",
+		bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
 		edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 		tile = false, edgeSize = 1,
 		insets = { left = 0, right = 0, top = 0, bottom = 0 }
@@ -291,8 +291,8 @@ do
 		--frame:SetToplevel(true)
 
 		-- NOTE: The whole scroll frame code is copied from the AceGUI-3.0 widget ScrollFrame
-		local scrollFrame = CreateFrame("ScrollFrame", nil, frame)
-		local itemFrame = CreateFrame("Frame", nil, scrollFrame)
+		local scrollFrame = CreateFrame("ScrollFrame", nil, frame,BackdropTemplateMixin and "BackdropTemplate")
+		local itemFrame = CreateFrame("Frame", nil, scrollFrame,BackdropTemplateMixin and "BackdropTemplate")
 
 		self.scrollFrame = scrollFrame
 		self.itemFrame = itemFrame
@@ -635,10 +635,10 @@ do
 	end
 
 	local function SetDropDownStyle(self, xTopleft, yTopleft, xBottomright, yBottomright)
-		 self:RemoveTextures()
-		-- self:SetStyle("Frame", "Transparent")
-		-- self.Panel:SetPoint("TOPLEFT", self, "TOPLEFT", xTopleft, yTopleft)
-		-- self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", xBottomright, yBottomright)
+		self:RemoveTextures()
+		self:SetStyle("Frame", "Transparent")
+		self.Panel:SetPoint("TOPLEFT", self, "TOPLEFT", xTopleft, yTopleft)
+		self.Panel:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", xBottomright, yBottomright)
 	end
 
 	local WidgetButton_OnClick = function(self)
@@ -652,8 +652,8 @@ do
 
 	local function Constructor()
 		local count = AceGUI:GetNextWidgetNum(widgetType)
-		local frame = CreateFrame("Frame", nil, UIParent)
-		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate")
+		local frame = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
+		local dropdown = CreateFrame("Frame", "AceGUI30DropDown"..count, frame, "UIDropDownMenuTemplate",BackdropTemplateMixin and "BackdropTemplate")
 
 		local self = {}
 		self.type = widgetType
@@ -717,7 +717,7 @@ do
 			SVUI.API:Set("PageButton", button, true)
 		end
 
-		local button_cover = CreateFrame("BUTTON",nil,self.frame)
+		local button_cover = CreateFrame("BUTTON",nil,self.frame,BackdropTemplateMixin and "BackdropTemplate")
 		button_cover.obj = self
 		button_cover:SetPoint("TOPLEFT",self.frame,"BOTTOMLEFT",0,25)
 		button_cover:SetPoint("BOTTOMRIGHT",self.frame,"BOTTOMRIGHT")

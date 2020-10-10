@@ -99,7 +99,7 @@ local methods = {
 Constructor
 -------------------------------------------------------------------------------]]
 local function Constructor()
-	local frame = CreateFrame("Frame", BackdropTemplateMixin and "BackdropTemplate")
+	local frame = CreateFrame("Frame")
 	frame:Hide()
 
 	-- support functions for the Blizzard Interface Options
@@ -118,7 +118,7 @@ local function Constructor()
 	label:SetJustifyV("TOP")
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
+	local content = CreateFrame("Frame", nil, frame)
 	content:SetPoint("TOPLEFT", 10, -10)
 	content:SetPoint("BOTTOMRIGHT", -10, 10)
 

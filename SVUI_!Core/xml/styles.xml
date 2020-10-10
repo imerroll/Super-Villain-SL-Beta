@@ -466,7 +466,7 @@
                         <Anchor point="TOPRIGHT" relativePoint="TOP" />
                         <Anchor point="BOTTOMLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="TopRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-TOPRIGHT">
                     <Anchors>
@@ -474,7 +474,7 @@
                         <Anchor point="TOPLEFT" relativePoint="TOP" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="BottomLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-BOTTOMLEFT">
                     <Anchors>
@@ -482,7 +482,7 @@
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
                         <Anchor point="TOPLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE1-BOTTOMRIGHT">
                     <Anchors>
@@ -490,7 +490,7 @@
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
                         <Anchor point="TOPRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
             </Layer>
         </Layers>
@@ -523,7 +523,7 @@
                         <Anchor point="TOPRIGHT" relativePoint="TOP" />
                         <Anchor point="BOTTOMLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                   <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="TopRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-TOPRIGHT">
                     <Anchors>
@@ -531,7 +531,7 @@
                         <Anchor point="TOPLEFT" relativePoint="TOP" />
                         <Anchor point="BOTTOMRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.05" g="0.05" b="0.05" a="0.5" />
+                   <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="BottomLeft" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMLEFT">
                     <Anchors>
@@ -539,7 +539,7 @@
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
                         <Anchor point="TOPLEFT" relativePoint="LEFT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
                 <Texture parentKey="BottomRight" nonBlocking="true" file="Interface\AddOns\SVUI_!Core\assets\backgrounds\window\COMPOSITE2-BOTTOMRIGHT">
                     <Anchors>
@@ -547,7 +547,7 @@
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
                         <Anchor point="TOPRIGHT" relativePoint="RIGHT" />
                     </Anchors>
-                    <Color r="0.1" g="0.1" b="0.1" a="0.5" />
+                    <Color r="0.2" g="0.2" b="0.2" a="0.5" />
                 </Texture>
             </Layer>
         </Layers>
