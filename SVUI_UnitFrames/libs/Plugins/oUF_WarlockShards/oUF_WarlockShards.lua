@@ -27,6 +27,7 @@ local shardColor = {
 }
 
 local Update = function(self, event, unit, powerType)
+if (UnitLevel("player") >= 10) then  
 	local bar = self.WarlockShards;
 
 	if(bar.PreUpdate) then bar:PreUpdate(unit) end
@@ -72,6 +73,7 @@ local Update = function(self, event, unit, powerType)
 
 	if(bar.PostUpdate) then
 		return bar:PostUpdate(unit, spec)
+	end
 	end
 end
 

@@ -83,7 +83,7 @@
     <Script file="system\misc.lua"/>
     <Script file="system\mail.lua"/>
     <Script file="system\henchmen.lua"/>
-    <Script file="system\letsride.lua"/>
+    <!--<Script file="system\letsride.lua"/>-->
     <Script file="system\automations.lua"/>
     <Script file="system\gear.lua"/>
 

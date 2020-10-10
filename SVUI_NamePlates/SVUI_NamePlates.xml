@@ -105,5 +105,8 @@
 
     <Script file="Loader.lua"/>
     <Script file='SVUI_NamePlates.lua'/>
+	
+	<Include file="oUF\oUF.xml"/>
+	<Script file='oUF_NamePlateAuras_SVUI.lua'/>
     <!-- <Script file='components\healers.lua'/> -->
 </Ui>

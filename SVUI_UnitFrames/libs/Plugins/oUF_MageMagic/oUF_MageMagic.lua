@@ -202,7 +202,7 @@ local Update = function(self, event, ...)
 	if(not spec) then return end
 
 	if(bar.PreUpdate) then bar:PreUpdate(spec) end
-
+	if (UnitLevel("player") >= 10) then  
 	local maxCount = SpecMaximum[spec];
 	local start, duration, reset = GetResources[spec](self, event, ...);
 	if(not reset) then
@@ -259,7 +259,7 @@ local Update = function(self, event, ...)
 			end
 		end
 	end
-
+	end
 	if(bar.PostUpdate) then
 		return bar:PostUpdate(event, SPELLCOUNT, maxCount)
 	end

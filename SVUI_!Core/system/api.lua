@@ -2093,11 +2093,11 @@ MOD.Concepts["DropDown"] = function(self, adjustable, frame, width)
             frame.BG:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -10, 6)
             frame.BG:SetTexture(SV.media.background.transparent)
 
-            local fg = CreateFrame("Frame", nil, frame)
-            fg:SetPoint("TOPLEFT", frame, "TOPLEFT", 18, -2)
-            fg:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -10, 6)
-            fg:SetBackdrop(SV.media.backdrop.outline)
-            frame.Brdr = fg
+            -- local fg = CreateFrame("Frame", nil, frame)
+            -- fg:SetPoint("TOPLEFT", frame, "TOPLEFT", 18, -2)
+            -- fg:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -10, 6)
+            -- fg:SetBackdrop(SV.media.backdrop.outline)
+            -- frame.Brdr = fg
         end
     end
 end

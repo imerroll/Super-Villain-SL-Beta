@@ -116,6 +116,7 @@ CUSTOM HANDLERS
 ##########################################################
 ]]--
 local UpdateTextures = function(self, spec)
+if (UnitLevel("player") >= 10) then  
 	local max = self.MaxCount;
 	local colors = shardColors[spec];
 	local textures = shardTextures[spec];
@@ -129,6 +130,7 @@ local UpdateTextures = function(self, spec)
 		--self[i].FX:SetEffect(specFX[spec])
 	end
 	self.CurrentSpec = spec
+	end
 end
 
 local ShardUpdate = function(self, value)
