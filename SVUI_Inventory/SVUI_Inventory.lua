@@ -837,7 +837,7 @@ do
 		if(BagBar.Grip and (not BagBar.Grip:HasMoved())) then
 			BagBar:ClearAllPoints()
 			if(reset) then
-				BagBar:SetPoint("BOTTOMLEFT", SV.Dock.BottomRight.Window, "TOPLEFT", -4, 0)
+				BagBar:SetPoint("CENTER", BagBar.Grip, "CENTER", 0,0)
 			else
 				BagBar:SetPoint("BOTTOMLEFT", self.MasterFrame, "TOPLEFT", -4, 0)
 			end
@@ -850,7 +850,7 @@ do
 		BagBar:SetParent(SV.Screen)
 		BagBar:ClearAllPoints()
 		BagBar:SetSize(160, 30)
-		BagBar:SetPoint("BOTTOMLEFT", SV.Dock.BottomRight.Window, "TOPLEFT", -4, 0)
+		BagBar:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -550,100)
 		BagBar.buttons = {}
 		BagBar.___fade = bagFading;
 		BagBar:EnableMouse(true)

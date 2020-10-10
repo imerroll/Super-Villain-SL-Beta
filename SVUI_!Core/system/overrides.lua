@@ -78,14 +78,14 @@ local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
 end
 local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 end
 local MirrorBarEventFrame = CreateFrame("Frame", nil)
 local mirrorYOffset={
@@ -359,7 +359,7 @@ end
 local LootSlot_OnLeave = function(self)
 	if self.quality and self.quality > 1 then
 		--local color = ITEM_QUALITY_COLORS[self.quality]
-		--self.drop:SetVertexColor(color.r, color.g, color.b)
+		self.drop:SetVertexColor(1, 1, 0)
 	else
 		--self.drop:Hide()
 	end
@@ -446,7 +446,7 @@ local function MakeSlots(id)
 	slot.drop:SetPoint("LEFT", slot.icon, "RIGHT", 0, 0)
 	slot.drop:SetPoint("RIGHT", slot)
 	slot.drop:SetAllPoints(slot)
-	slot.drop:SetAlpha(.3)
+	slot.drop:SetAlpha(.5)
 
 	slot.questTexture = slot.iconFrame:CreateTexture(nil, "OVERLAY")
 	slot.questTexture:InsetPoints()
@@ -741,10 +741,10 @@ EventFunc["LOOT_READY"] = function(autoLoot)
 				slot.count:Hide()
 			end
 			if quality and quality > 1 then
-				-- slot.drop:SetVertexColor(color.r, color.g, color.b)
-				-- slot.drop:Show()
+				self.drop:SetVertexColor(1, 1, 0)
+				 slot.drop:Show()
 			else
-				--slot.drop:Hide()
+				slot.drop:Hide()
 			end
 			slot.quality = quality;
 			slot.name:SetText(item)
@@ -792,7 +792,7 @@ EventFunc["LOOT_READY"] = function(autoLoot)
 	titleWidth = titleWidth + 5;
 	--local color = ITEM_QUALITY_COLORS[iQuality]
 	--SVUI_LootFrame:SetBackdropBorderColor(color.r, color.g, color.b, .8)
-	ColorObject(SVUI_LootFrame,0,0,0,1,0.15,0.25,1,0.8)
+	ColorObject(SVUI_LootFrame,0.3,0.1,0.1,0.85,0.15,0.25,1,0.8)
 	SVUI_LootFrame:SetWidth(max(nameWidth, titleWidth))
 end
 
