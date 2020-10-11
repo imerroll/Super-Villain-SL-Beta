@@ -270,7 +270,7 @@ local function CharacterFrameStyle()
 		 return
 	end
 
-	SV.API:Set("Window", CharacterFrame, true, true, 1, 3, 3)
+	SV.API:Set("Window", CharacterFrame, true, false, 1, 3, 3)
 
 	SV.API:Set("CloseButton", CharacterFrameCloseButton)
 	SV.API:Set("ScrollBar", CharacterStatsPane)
@@ -278,6 +278,10 @@ local function CharacterFrameStyle()
 	SV.API:Set("ScrollBar", TokenFrameContainer)
 	SV.API:Set("ScrollBar", GearManagerDialogPopupScrollFrame)
 	CharacterFrame.NineSlice:RemoveTextures()
+	CharacterFrameInset:Hide()
+	CharacterFrameInsetRight.NineSlice:Hide()
+	SV.API:Set("ScrollBar", PaperDollTitlesPaneScrollBar)
+
 
 	StyleCharacterSlots()
 
@@ -313,7 +317,7 @@ local function CharacterFrameStyle()
 	hooksecurefunc("EquipmentFlyout_Show", EquipmentFlyout_OnShow)
 
 	CharacterFramePortrait:Die()
-	SV.API:Set("ScrollBar", _G["PaperDollTitlesPaneScrollBar"], 5)
+	--SV.API:Set("ScrollBar", _G["PaperDollTitlesPaneScrollBar"], 5)
 	SV.API:Set("ScrollBar", _G["PaperDollEquipmentManagerPaneScrollBar"], 5)
 
 	for _,gName in pairs(CharFrameList) do
