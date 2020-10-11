@@ -243,7 +243,7 @@ local LootRollType = {[1] = "need", [2] = "greed", [3] = "disenchant", [0] = "pa
 local LOOT_WIDTH, LOOT_HEIGHT = 328, 28;
 
 local SVUI_LootFrameHolder = CreateFrame("Frame", "SVUI_LootFrameHolder", UIParent);
-SVUI_LootFrameHolder:SetPoint("BOTTOMRIGHT", SVUI_DockTopLeft, "BOTTOMRIGHT", 0, 0);
+SVUI_LootFrameHolder:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 450, -200);
 SVUI_LootFrameHolder:SetSize(150, 22);
 SVUI_LootFrameHolder:SetFrameStrata("FULLSCREEN_DIALOG");
 SVUI_LootFrameHolder:SetToplevel(true);
@@ -792,7 +792,7 @@ EventFunc["LOOT_READY"] = function(autoLoot)
 	titleWidth = titleWidth + 5;
 	--local color = ITEM_QUALITY_COLORS[iQuality]
 	--SVUI_LootFrame:SetBackdropBorderColor(color.r, color.g, color.b, .8)
-	ColorObject(SVUI_LootFrame,0.3,0.1,0.1,0.85,0.15,0.25,1,0.8)
+	ColorObject(SVUI_LootFrame,0.13, 0, 0, 0.7,0.15,0.25,1,0.8)
 	SVUI_LootFrame:SetWidth(max(nameWidth, titleWidth))
 end
 
@@ -1030,7 +1030,7 @@ local function SetOverrides()
 	NewHook(DurabilityFrame, "SetPoint", Dura_OnSetPoint)
 
 	TicketStatusFrame:ClearAllPoints()
-	TicketStatusFrame:SetPoint("TOPRIGHT", SV.Dock.TopLeft, "TOPRIGHT", 0, 0)
+	TicketStatusFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 450, -100)
 	-- SV:NewAnchor(TicketStatusFrame, L["GM Ticket Frame"], nil, nil, "GM")
 	SV:NewAnchor(TicketStatusFrame, L["GM Ticket Frame"])
 

@@ -59,14 +59,14 @@ local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
 end
 local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 end
 
 local Layout = _G["SVUI_Layout"];
@@ -639,7 +639,7 @@ function Layout:Movable_OnEnter()
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(0, 1, 1)
 		--self:SetBackdropBorderColor(0, 0.7, 1, 1)
-		ColorObject(self,0.65,0.55,1,0.45,0, 0.25, 1, 0.5)
+		ColorObject(self,0.65,0.55,1,0,0, 0.25, 1, 0.5)
 	end
 	UpdateFrameTarget = self;
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-ON]])
@@ -652,7 +652,7 @@ function Layout:Movable_OnLeave()
 	if(CurrentFrameTarget ~= self) then
 		self.text:SetTextColor(1, 1, 1)
 		--self:SetBackdropBorderColor(0, 0.25, 1, 0.5)
-		ColorObject(self,0.25,0.55,1,0.45,0, 0.25, 1, 0.5)
+		ColorObject(self,0,0,0,0,0, 0.25, 1, 0.5)
 	end
 	Layout.Portrait:SetTexture([[Interface\AddOns\SVUI_!Core\assets\textures\Doodads\MENTALO-OFF]])
 	TheHand:Hide()

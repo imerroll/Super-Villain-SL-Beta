@@ -71,14 +71,14 @@ local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
 end
 local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
 	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
 	MyObject:SetAllPoints(Object)
 	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
-	MyObject:SetBackdropColor(bcR,bcG,bcG,bcA)
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
 end
 
 local talkAnims = {60,64,65,67};

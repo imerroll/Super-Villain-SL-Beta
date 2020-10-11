@@ -86,7 +86,7 @@
 
     <Frame name="SVUI_CoreStyle_ActionSlot" virtual="true">
         <Attributes>
-            <Attribute name="panelID" type="string" value="actionslot" />
+            <Attribute name="panelID" type="string" value="actionslot" inherits="BackdropTemplate" />
             <Attribute name="panelPadding" type="number" value="1" />
             <Attribute name="panelColor" type="string" value="transparent" />
             <Attribute name="panelGradient" type="boolean" value="false" />
@@ -95,12 +95,12 @@
             <Attribute name="panelOffset" type="number" value="0" />
             <Attribute name="shadowAlpha" type="number" value="0.75" />
         </Attributes>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\BUTTONS\WHITE8X8" tile="false">
-            <EdgeSize val="1" />
+        <Backdrop bgFile="Interface\BUTTONS\WHITE8X8" edgeFile="Interface\BUTTONS\WHITE8X8" tile="false">
+            <EdgeSize val="2" />
             <TileSize val="0" />
-            <BackgroundInsets left="1" right="1" top="1" bottom="1" />
-            <Color r="0" g="0" b="0" a="0.5" />
-            <BorderColor r="0" g="0" b="0" a="1" />
+            <BackgroundInsets left="2" right="2" top="2" bottom="2" />
+            <Color r="1" g="1" b="1" a="1" />
+            <BorderColor r="1" g="1" b="1" a="1" />
         </Backdrop>
         <Layers>
             <Layer level="BORDER">
@@ -110,7 +110,7 @@
                         <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
                     </Anchors>
                     <Size>
-                        <AbsDimension x="1" />
+                        <AbsDimension x="10" />
                     </Size>
                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
@@ -120,7 +120,7 @@
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" />
                     </Anchors>
                     <Size>
-                        <AbsDimension x="1" />
+                        <AbsDimension x="10" />
                     </Size>
                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
@@ -130,7 +130,7 @@
                         <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" />
                     </Anchors>
                     <Size>
-                        <AbsDimension y="1" />
+                        <AbsDimension y="10" />
                     </Size>
                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>
@@ -140,7 +140,7 @@
                         <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" />
                     </Anchors>
                     <Size>
-                        <AbsDimension y="1" />
+                        <AbsDimension y="10" />
                     </Size>
                     <Color r="0" g="0" b="0" a="1" />
                 </Texture>

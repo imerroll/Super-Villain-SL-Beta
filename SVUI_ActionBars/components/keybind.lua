@@ -286,9 +286,9 @@ local Binder_OnBinding = function(self, event)
     event = event:upper()
   end 
 
-  local altText = IsAltKeyDown() and "ALT-" or "";
-  local ctrlText = IsControlKeyDown() and "CTRL-" or "";
-  local shiftText = IsShiftKeyDown() and "SHIFT-" or "";
+  local altText = IsAltKeyDown() and "A-" or "";
+  local ctrlText = IsControlKeyDown() and "C-" or "";
+  local shiftText = IsShiftKeyDown() and "S-" or "";
   local strBind = ("%s%s%s%s"):format(altText, ctrlText, shiftText, event)
 
   if(not Binder.spellmacro or Binder.spellmacro == "PET" or Binder.spellmacro == "STANCE" or Binder.spellmacro == "FLYOUT") then 
@@ -402,7 +402,7 @@ function MOD:LoadKeyBinder()
   Binder:EnableMouseWheel(true)
   Binder.texture = Binder:CreateTexture()
   Binder.texture:SetAllPoints(Binder)
-  Binder.texture:SetColorTexture(0, 0, 0, .25)
+  Binder.texture:SetColorTexture(1, 0, 0, .25)
   Binder:Hide()
 
   GameTooltip:HookScript("OnUpdate", GameTooltip_OnUpdate)
@@ -456,7 +456,7 @@ function MOD:LoadKeyBinder()
   pop:SetClampedToScreen(true)
   pop:SetWidth(360)
   pop:SetHeight(130)
-  pop:SetStyle("!_Frame", "Transparent")
+  pop:SetStyle("!_Frame", "Window2")
   pop:Hide()
 
   local moveHandle = NewFrame("Button", nil, pop)
@@ -486,7 +486,7 @@ function MOD:LoadKeyBinder()
   moveDesc:SetText(L["Hover your mouse over any actionbutton or spellbook button to bind it. Press the escape key or right click to clear the current actionbutton's keybinding."])
 
   local checkButton = NewFrame("CheckButton", "SVUI_KeyBindPopupCheckButton", pop, "OptionsCheckButtonTemplate")
-  checkButton:SetStyle("CheckButton")
+  checkButton:SetStyle("EditBox")
   _G["SVUI_KeyBindPopupCheckButtonText"]:SetText(CHARACTER_SPECIFIC_KEYBINDINGS)
   checkButton:SetScript("OnShow", Check_OnShow)
   checkButton:SetScript("OnClick", Check_OnClick)

@@ -51,6 +51,20 @@ MOD.AltVehicleBar = false;
 LOCAL VARS
 ##########################################################
 ]]--
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
+	insets = {top = 0, left = 0, bottom = 0, right = 0}})
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
+end
 local maxFlyoutCount = 0
 local SetSpellFlyoutHook
 local NewFrame = CreateFrame
@@ -110,7 +124,7 @@ local Bar_OnEnter = function(self)
 	if(self._fade) then
 		for i=1, self.maxButtons do
 		
-			self.buttons[i].cooldown:SetSwipeColor(1, 1, 1, 1)
+			self.buttons[i].cooldown:SetSwipeColor(0.5, 0.2, 0.2, 1)
 			self.buttons[i].cooldown:SetDrawBling(true)
 		end
 		self:FadeIn(0.2, self:GetAlpha(), self._alpha)
@@ -129,11 +143,16 @@ end
 
 function MOD:FixKeybindText(button)
 	local hotkey = _G[button:GetName()..'HotKey']
+	--print(hotkey:GetText())
+	 -- if hotkey:GetText() == "SHIFT-A" then
+	 -- print(hotkey:GetText().gsub('SHIFT%-", "SHIFT","K",5))
+	 -- end
+	
 	local hotkeyText = hotkey:GetText()
 	if hotkeyText then
-		hotkeyText = hotkeyText:gsub('SHIFT%-', "S")
-		hotkeyText = hotkeyText:gsub('ALT%-',  "A")
-		hotkeyText = hotkeyText:gsub('CTRL%-',  "C")
+		hotkeyText = hotkeyText:gsub("SHIFT%-", "S ")
+		hotkeyText = hotkeyText:gsub('ALT%-',  "A ")
+		hotkeyText = hotkeyText:gsub('CTRL%-',  "C ")
 		hotkeyText = hotkeyText:gsub('BUTTON',  "B")
 		hotkeyText = hotkeyText:gsub('MOUSEWHEELUP', "WU")
 		hotkeyText = hotkeyText:gsub('MOUSEWHEELDOWN', "WD")
@@ -191,7 +210,7 @@ local function SaveActionButton(button, noStyle)
 	local name = button:GetName()
 	local cooldown = _G[name.."Cooldown"]
 	cooldown.SizeOverride = SV.db.ActionBars.cooldownSize
-	 cooldown:SetSwipeColor(1, 1, 1, 1)
+	 cooldown:SetSwipeColor(0.5, 0.2, 0.2, 1)
 	 cooldown:SetDrawBling(true)
 	if(not button.cooldown) then
 		button.cooldown = cooldown;
@@ -326,7 +345,6 @@ local function ModifyActionButton(button, noStyle)
     	hotkey:SetJustifyV("TOP")
 		hotkey:SetShadowOffset(1,-1)
 	end
-
 	button.FlyoutUpdateFunc = SetFlyoutButton;
 	MOD:FixKeybindText(button)
 end
@@ -425,7 +443,7 @@ function MOD:UpdateBarBindings(pet, stance)
 		      	hotkey:SetText(binding)
 		      	MOD:FixKeybindText(_G[name])
 		    else
-		      	--hotkey:Hide()
+		      	hotkey:Hide()
 		    end
 	  	end
   	end
@@ -444,10 +462,10 @@ function MOD:UpdateBarBindings(pet, stance)
 		      	hotkey:SetText(binding)
 		      	MOD:FixKeybindText(_G[name])
 				if pet == false then
-					--hotkey:hide()
+				hotkey:hide()
 				end
-		    --else
-	    		--hotkey:Hide()
+		    else
+	    		hotkey:Hide()
 	    	end
 	  	end
 	end
@@ -701,7 +719,7 @@ do
 					button:Hide()
 				end
 				if button.cooldown then
-					button.cooldown:SetSwipeColor(1, 1, 1, 1)
+					button.cooldown:SetSwipeColor(0.5, 0.2, 0.2, 1)
 					button.cooldown:SetDrawBling(true)
 				end
 			else
@@ -924,7 +942,7 @@ local function SetStanceBarButtons()
 			if(button.cooldown) then
 				if texture then
 					button.cooldown:SetAlpha(1)
-					button.cooldown:SetSwipeColor(1, 1, 1, 1)
+					button.cooldown:SetSwipeColor(0.5, 0.2, 0.2, 1)
 					button.cooldown:SetDrawBling(true)
 				else
 					button.cooldown:SetAlpha(0)
@@ -939,12 +957,15 @@ local function SetStanceBarButtons()
 				if maxForms > 1 then
 					if button.checked then button.checked:SetColorTexture(0, 0.5, 0, 0.2) end
 					--button:SetBackdropBorderColor(0.4, 0.8, 0)
+					ColorObject(button,0,0,0,0,0.4,0.8,0,1)
+					
 				end
 				icon:SetVertexColor(1, 1, 1)
 				button:SetChecked(true)
 			else
 				if maxForms > 1 and currentForm > 0 then
 				--	button:SetBackdropBorderColor(0, 0, 0)
+				ColorObject(button,0,0,0,0,0,0,0,0)
 					if button.checked then
 						button.checked:SetAlpha(1)
 					end
@@ -1068,13 +1089,16 @@ CreateActionBars = function(self)
 		thisBar.dataID = barID;
 		thisBar.binding = barBindingIndex[i];
 		thisBar.page = barPageIndex[i];
+		--if(i == 1) then
+		_G["SVUI_ActionBar1"]:SetPoint("BOTTOM", SV.Screen, "BOTTOM", 0, 30)
+		--end
 
 		if(i == 3) then
-			thisBar:SetPoint("BOTTOMLEFT", _G["SVUI_ActionBar1"], "BOTTOMRIGHT", space, 0)
+			thisBar:SetPoint("BOTTOMLEFT", _G["SVUI_ActionBar1"], "BOTTOMRIGHT", space-2, 0)
 		elseif(i == 4) then
-			thisBar:SetPoint("RIGHT", SV.Screen, "RIGHT", -space, 0)
+			thisBar:SetPoint("RIGHT", SV.Screen, "RIGHT", (-space-2), 0)
 		elseif(i == 5) then
-			thisBar:SetPoint("BOTTOMRIGHT", _G["SVUI_ActionBar1"], "BOTTOMLEFT", -space, 0)
+			thisBar:SetPoint("BOTTOMRIGHT", _G["SVUI_ActionBar1"], "BOTTOMLEFT", (-space-2), 0)
 		else
 			local nextGap = (i == 2) and -space or space
 			thisBar:SetPoint("BOTTOM", DEFAULT_MAIN_ANCHOR, "TOP", 0, nextGap)
@@ -1091,12 +1115,15 @@ CreateActionBars = function(self)
 		thisBar:SetFrameLevel(5)
 		bg:SetStyle("Frame", "Transparent")
 		bg:SetPanelColor("dark")
+		ColorObject(bg,0,0,0,0.35,0,0,0,1)
 		thisBar.backdrop = bg
 
 		for k = 1, buttonMax do
 			local buttonName = ("%sButton%d"):format(barName, k)
 			thisBar.buttons[k] = NewActionButton(thisBar, k, buttonName)
 			thisBar.buttons[k]:SetState(0, "action", k)
+			--print(thisBar.buttons[k])
+			--ColorObject(thisBar.buttons[k],0,0,0,0.15,1,1,1,1)
 			for x = 1, 14 do
 				local calc = (x - 1)  *  buttonMax  +  k;
 				thisBar.buttons[k]:SetState(x, "action", calc)
@@ -1212,6 +1239,7 @@ do
 	  bg:SetFrameLevel(0);
 	  bg:SetStyle("Frame", "Transparent")
 	  bg:SetPanelColor("dark")
+	  ColorObject(bg,0,0,0,0.35,0,0,0,1)
 	  stanceBar.backdrop = bg;
 
 	  for i = 1, NUM_STANCE_SLOTS do
@@ -1275,10 +1303,12 @@ do
 			if(isActive and (not restrictedAction)) then
 				button:SetChecked(true)
 				--button:SetBackdropBorderColor(0.4, 0.8, 0)
+				ColorObject(button,0,0,0,0,0.4,0.8,0,1)
 				if(IsPetAttackAction(i)) then PetActionButton_StartFlash(button) end
 			else
 				button:SetChecked(false)
 				--button:SetBackdropBorderColor(0, 0, 0)
+				ColorObject(button,0,0,0,0,0,0,0,0)
 				if(IsPetAttackAction(i)) then PetActionButton_StopFlash(button) end
 			end
 
@@ -1294,7 +1324,7 @@ do
 				--if GetPetActionSlotUsable(i) then SetDesaturation(icon, nil) else SetDesaturation(icon, 1) end
 				if(button.cooldown) then
 					button.cooldown:SetAlpha(1)
-					button.cooldown:SetSwipeColor(1, 1, 1, 1)
+					button.cooldown:SetSwipeColor(0.5, 0.2, 0.2, 1)
 					button.cooldown:SetDrawBling(true)
 				end
 
@@ -1628,7 +1658,7 @@ function MOD:Load()
 	self:InitializeZoneButton()
 	self:InitializeTotemBar()
 
-	self:LoadKeyBinder()
+	--self:LoadKeyBinder()
 
 	self:RegisterEvent("UPDATE_BINDINGS", "UpdateAllBindings")
 	self:RegisterEvent("PET_BATTLE_CLOSE", "UpdateAllBindings")

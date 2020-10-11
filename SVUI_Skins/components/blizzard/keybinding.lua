@@ -29,31 +29,31 @@ local BindButtons = {
 local function BindingStyle()
 	if SV.db.Skins.blizzard.enable ~= true or SV.db.Skins.blizzard.binding ~= true then return end 
 
-	for _, gName in pairs(BindButtons)do 
-		local btn = _G[gName]
-		if(btn) then
-			btn:RemoveTextures()
-			btn:SetStyle("Button")
-		end
-	end
+	-- for _, gName in pairs(BindButtons)do 
+		-- local btn = _G[gName]
+		-- if(btn) then
+			-- btn:RemoveTextures()
+			-- btn:SetStyle("Button")
+		-- end
+	-- end
 
-	for i = 1, KEY_BINDINGS_DISPLAYED do 
-		local button1 = _G["KeyBindingFrameBinding"..i.."Key1Button"]
-		if(button1) then
-			button1:RemoveTextures(true)
-			button1:SetStyle("Editbox")
-		end
+	-- for i = 1, KEY_BINDINGS_DISPLAYED do 
+		-- local button1 = _G["KeyBindingFrameBinding"..i.."Key1Button"]
+		-- if(button1) then
+			-- button1:RemoveTextures(true)
+			-- button1:SetStyle("Editbox")
+		-- end
 
-		local button2 = _G["KeyBindingFrameBinding"..i.."Key2Button"]
-		if(button2) then
-			button2:RemoveTextures(true)
-			button2:SetStyle("Editbox")
-		end
-	end
+		-- local button2 = _G["KeyBindingFrameBinding"..i.."Key2Button"]
+		-- if(button2) then
+			-- button2:RemoveTextures(true)
+			-- button2:SetStyle("Editbox")
+		-- end
+	-- end
 
-	SV.API:Set("ScrollBar", KeyBindingFrameScrollFrameScrollBar)
-	KeyBindingFrame:RemoveTextures()
-	KeyBindingFrame:SetStyle("Frame", "Window")
+	--SV.API:Set("Window", KeyBindingFrameScrollFrameScrollBar)
+	--KeyBindingFrame:RemoveTextures()
+	--KeyBindingFrame:SetStyle("Frame", "Window2")
 end
 --[[ 
 ########################################################## 

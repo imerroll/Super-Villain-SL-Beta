@@ -163,8 +163,21 @@ local methods = {
 --[[-----------------------------------------------------------------------------
 Constructor
 -------------------------------------------------------------------------------]]
+local function ColorObject(Object,bcR,bcG,bcB,bcA,bbcR,bbcG,bbcB,bbcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
+	MyObject:SetBackdropBorderColor(bbcR,bbcG,bbcB,bbcA)
+end
+local function ColorObjectOnly(Object,bcR,bcG,bcB,bcA)
+	MyObject = CreateFrame("Frame", nil, Object, BackdropTemplateMixin and "BackdropTemplate")
+	MyObject:SetAllPoints(Object)
+	MyObject:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"})
+	MyObject:SetBackdropColor(bcR,bcG,bcB,bcA)
+end
 local backdrop  = {
-	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\TRANSPARENT",
+	bgFile = "Interface\\AddOns\\SVUI_!Core\\assets\\backgrounds\\DARK",
 	edgeFile = "Interface\\AddOns\\SVUI_!Core\\assets\\borders\\DEFAULT",
 	tile = true, tileSize = 16, edgeSize = 8,
 	insets = { left = 2, right = 2, top = 2, bottom = 2 }
@@ -205,8 +218,9 @@ local function Constructor()
 
 	local msgframe = CreateFrame("Frame", nil, UIParent,BackdropTemplateMixin and "BackdropTemplate")
 	msgframe:SetHeight(30)
-	msgframe:SetBackdrop(backdrop)
-	msgframe:SetBackdropColor(0,0,0)
+	ColorObject(msgframe,1,0,0,0.5,1,1,1,1)
+	--msgframe:SetBackdrop(backdrop)
+	--msgframe:SetBackdropColor(1,1,1,1)
 	msgframe:SetFrameStrata("FULLSCREEN_DIALOG")
 	msgframe:SetFrameLevel(1000)
 	msgframe:SetToplevel(true)
