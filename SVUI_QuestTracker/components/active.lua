@@ -252,19 +252,19 @@ local RefreshActiveObjective = function(self, event, ...)
 		if(event == 'ACTIVE_QUEST_LOADED') then
 			self.ActiveQuestID = 0;
 			self:Set(...)
-		--elseif(event == 'SUPER_TRACKED_QUEST_CHANGED') then
-			-- local questID = ...;
-			-- if(questID and questID ~= self.ActiveQuestID) then
-				-- local questLogIndex = GetQuestLogIndexByID(questID)
-				-- if(questLogIndex) then
-					-- local questWatchIndex = GetQuestWatchIndex(questLogIndex)
-					-- if(questWatchIndex) then
-						-- local title, level, suggestedGroup = GetQuestLogTitle(questLogIndex)
-						-- local questID, _, questLogIndex, numObjectives, requiredMoney, completed, startEvent, isAutoComplete, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(questWatchIndex);
-						-- self:Set(title, level, nil, questID, questLogIndex, numObjectives, duration, elapsed, hasLocalPOI)
-					-- end
-				-- end
-			-- end
+		elseif(event == 'SUPER_TRACKED_QUEST_CHANGED') then
+			local questID = ...;
+			if(questID and questID ~= self.ActiveQuestID) then
+				local questLogIndex = GetQuestLogIndexByID(questID)
+				if(questLogIndex) then
+					local questWatchIndex = GetQuestWatchIndex(questLogIndex)
+					if(questWatchIndex) then
+						local title, level, suggestedGroup = GetQuestLogTitle(questLogIndex)
+						local questID, _, questLogIndex, numObjectives, requiredMoney, completed, startEvent, isAutoComplete, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(questWatchIndex);
+						self:Set(title, level, nil, questID, questLogIndex, numObjectives, duration, elapsed, hasLocalPOI)
+					end
+				end
+			end
 		elseif(event == 'FORCED_UPDATE') then
 			local questID = self.ActiveQuestID;
 			if(questID and questID ~= 0) then
@@ -319,17 +319,17 @@ local function UpdateActiveLocals(...)
 end
 
 function MOD:InitializeActive()
-	local active = CreateFrame("Frame", nil, self.Docklet, BackdropTemplateMixin and "BackdropTemplate")
+	local active = CreateFrame("Frame", nil, self.Docklet)
     active:SetPoint("TOPLEFT", self.Docklet, "TOPLEFT");
     active:SetPoint("TOPRIGHT", self.Docklet, "TOPRIGHT");
     active:SetHeight(1);
 
-	local block = CreateFrame("Frame", nil, active, BackdropTemplateMixin and "BackdropTemplate")
+	local block = CreateFrame("Frame", nil, active)
 	block:SetPoint("TOPLEFT", active, "TOPLEFT", 2, -4);
 	block:SetPoint("TOPRIGHT", active, "TOPRIGHT", -2, -4);
 	block:SetHeight(LARGE_INNER_HEIGHT);
 
-	block.Button = CreateFrame("Button", nil, block, BackdropTemplateMixin and "BackdropTemplate")
+	block.Button = CreateFrame("Button", nil, block)
 	block.Button:SetPoint("TOPLEFT", block, "TOPLEFT", 0, 0);
 	block.Button:SetPoint("BOTTOMRIGHT", block, "BOTTOMRIGHT", 0, 8);
 	block.Button:SetStyle("DockButton", "Transparent")
@@ -340,7 +340,7 @@ function MOD:InitializeActive()
 	block.Button:SetScript("OnEnter", ActiveButton_OnEnter)
 	block.Button:SetScript("OnLeave", ActiveButton_OnLeave)
 
-	block.CloseButton = CreateFrame("Button", nil, block.Button, "UIPanelCloseButton", BackdropTemplateMixin and "BackdropTemplate")
+	block.CloseButton = CreateFrame("Button", nil, block.Button, "UIPanelCloseButton")
 	block.CloseButton:RemoveTextures()
 	block.CloseButton:SetStyle("Button", -7, -7, "red")
 	block.CloseButton:SetFrameLevel(block.Button:GetFrameLevel() + 4)
@@ -352,7 +352,7 @@ function MOD:InitializeActive()
 	block.CloseButton.Parent = active;
 	block.CloseButton:SetScript("OnClick", ActiveButton_OnClick)
 
-	block.Badge = CreateFrame("Frame", nil, block.Button, BackdropTemplateMixin and "BackdropTemplate")
+	block.Badge = CreateFrame("Frame", nil, block.Button)
 	block.Badge:SetPoint("TOPLEFT", block.Button, "TOPLEFT", 4, -4);
 	block.Badge:SetSize((LARGE_INNER_HEIGHT - 4), (LARGE_INNER_HEIGHT - 4));
 	block.Badge:SetStyle("!_Frame", "Inset")
@@ -362,7 +362,7 @@ function MOD:InitializeActive()
 	block.Badge.Icon:SetTexture(MOD.media.incompleteIcon)
 	block.Badge.Icon:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))
 
-	-- block.Badge.Button = CreateFrame("Button", nil, UIParent, "SecureActionButtonTemplate", BackdropTemplateMixin and "BackdropTemplate")
+	-- block.Badge.Button = CreateFrame("Button", nil, UIParent, "SecureActionButtonTemplate")
 	-- local bX,bY = block.Badge:GetCenter()
 	-- block.Badge.Button:SetPoint("CENTER", UIParent, "CENTER", bX,bY);
 	-- block.Badge.Button:SetStyle("LiteButton")
@@ -372,7 +372,7 @@ function MOD:InitializeActive()
 	-- block.Badge.Button:SetAttribute("type", "macro")
 	-- block.Badge.Button:SetScript('OnEvent', MacroButton_OnEvent);
 
-	block.Header = CreateFrame("Frame", nil, block, BackdropTemplateMixin and "BackdropTemplate")
+	block.Header = CreateFrame("Frame", nil, block)
 	block.Header:SetPoint("TOPLEFT", block.Badge, "TOPRIGHT", 4, 0);
 	block.Header:SetPoint("TOPRIGHT", block.Button, "TOPRIGHT", -24, -4);
 	block.Header:SetHeight(INNER_HEIGHT - 2);
@@ -393,7 +393,7 @@ function MOD:InitializeActive()
 	block.Header.Text:SetPoint("TOPLEFT", block.Header.Level, "TOPRIGHT", 4, 0);
 	block.Header.Text:SetPoint("BOTTOMRIGHT", block.Header, "BOTTOMRIGHT", 0, 0);
 
-	block.Details = CreateFrame("Frame", nil, block.Header, BackdropTemplateMixin and "BackdropTemplate")
+	block.Details = CreateFrame("Frame", nil, block.Header)
 	block.Details:SetPoint("TOPLEFT", block.Header, "BOTTOMLEFT", 0, -2);
 	block.Details:SetPoint("TOPRIGHT", block.Header, "BOTTOMRIGHT", 0, -2);
 

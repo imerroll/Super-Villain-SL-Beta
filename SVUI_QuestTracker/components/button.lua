@@ -130,15 +130,15 @@ function MOD:InitializeQuestItem()
 
 	SV:NewAnchor(SVUI_QuestItemBar, L["Quest Item Button"])
 
-	local questitem = SV:CreateSecureButton("item", "SVUI_QuestItemBar", "SVUI_QuestAutoItemButton", UpdateButton);
+	local questitem = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
 	questitem.ArtFile = MOD.media.buttonArt;
-	questitem.blacklist[113191] = true
-	questitem.blacklist[110799] = true
-	questitem.blacklist[109164] = true
+	--questitem.blacklist[113191] = true
+	--questitem.blacklist[110799] = true
+	--questitem.blacklist[109164] = true
 	questitem:RegisterEvent('UPDATE_EXTRA_ACTIONBAR')
 	questitem:RegisterEvent('BAG_UPDATE_COOLDOWN')
 	questitem:RegisterEvent('BAG_UPDATE_DELAYED')
-	questitem:RegisterEvent('WORLD_MAP_UPDATE')
+	--questitem:RegisterEvent('WORLD_MAP_UPDATE')
 	questitem:RegisterEvent('QUEST_LOG_UPDATE')
 	questitem:RegisterEvent('QUEST_POI_UPDATE')
 

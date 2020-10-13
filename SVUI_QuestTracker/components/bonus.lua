@@ -184,7 +184,7 @@ local GetBonusRow = function(self, index)
 		local index = #self.Rows + 1;
 		local yOffset = 0;
 
-		local row = CreateFrame("Frame", nil, self, BackdropTemplateMixin and "BackdropTemplate")
+		local row = CreateFrame("Frame", nil, self)
 		if(previousFrame and previousFrame.Objectives) then
 			row:SetPoint("TOPLEFT", previousFrame.Objectives, "BOTTOMLEFT", 0, -6);
 			row:SetPoint("TOPRIGHT", previousFrame.Objectives, "BOTTOMRIGHT", 0, -6);
@@ -194,7 +194,7 @@ local GetBonusRow = function(self, index)
 		end
 		row:SetHeight(ROW_HEIGHT);
 
-		row.Header = CreateFrame("Frame", nil, row, BackdropTemplateMixin and "BackdropTemplate")
+		row.Header = CreateFrame("Frame", nil, row)
 		row.Header:SetPoint("TOPLEFT", row, "TOPLEFT", 2, -2);
 		row.Header:SetPoint("TOPRIGHT", row, "TOPRIGHT", -2, -2);
 		row.Header:SetHeight(INNER_HEIGHT);
@@ -434,7 +434,7 @@ end
 
 function MOD:InitializeBonuses()
 	local scrollChild = self.Docklet.ScrollFrame.ScrollChild;
-	local bonus = CreateFrame("Frame", nil, scrollChild, BackdropTemplateMixin and "BackdropTemplate")
+	local bonus = CreateFrame("Frame", nil, scrollChild)
 	bonus:SetWidth(ROW_WIDTH);
 	bonus:SetHeight(1);
 	bonus:SetPoint("TOPLEFT", self.Headers["Scenario"], "BOTTOMLEFT", 0, -4);

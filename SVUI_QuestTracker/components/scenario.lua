@@ -294,7 +294,7 @@ local UpdateAllTimers = function(self, ...)
 			end
 		end
 	end
-	--self:StopTimer()
+	self:StopTimer()
 end
 
 local RefreshScenarioObjective = function(self, event, ...)
@@ -356,7 +356,7 @@ end
 function MOD:InitializeScenarios()
 	local scrollChild = self.Docklet.ScrollFrame.ScrollChild;
 
-	local scenario = CreateFrame("Frame", nil, scrollChild, BackdropTemplateMixin and "BackdropTemplate")
+	local scenario = CreateFrame("Frame", nil, scrollChild)
 	scenario:SetHeight(ROW_HEIGHT);
 	scenario:SetPoint("TOPLEFT", scrollChild, "TOPLEFT", 0, 0);
 	scenario:SetPoint("TOPRIGHT", scrollChild, "TOPRIGHT", 0, 0);
@@ -366,13 +366,13 @@ function MOD:InitializeScenarios()
 	scenario.Refresh = RefreshScenarioObjective;
 	scenario.RefreshHeight = RefreshScenarioHeight;
 
-	local block = CreateFrame("Frame", nil, scenario, BackdropTemplateMixin and "BackdropTemplate")
+	local block = CreateFrame("Frame", nil, scenario)
 	block:SetPoint("TOPLEFT", scenario, "TOPLEFT", 2, -2);
 	block:SetPoint("TOPRIGHT", scenario, "TOPRIGHT", -2, -2);
 	block:SetHeight(1);
 	block:SetStyle("Frame", "Lite");
 
-	block.Badge = CreateFrame("Frame", nil, block, BackdropTemplateMixin and "BackdropTemplate")
+	block.Badge = CreateFrame("Frame", nil, block)
 	block.Badge:SetPoint("TOPLEFT", block, "TOPLEFT", 4, -4);
 	block.Badge:SetSize((LARGE_INNER_HEIGHT - 4), (LARGE_INNER_HEIGHT - 4));
 	block.Badge:SetStyle("!_Frame", "Inset")
@@ -382,7 +382,7 @@ function MOD:InitializeScenarios()
 	block.Icon:SetTexture(LINE_SCENARIO_ICON)
 	block.Icon:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))
 
-	block.Header = CreateFrame("Frame", nil, block, BackdropTemplateMixin and "BackdropTemplate")
+	block.Header = CreateFrame("Frame", nil, block)
 	block.Header:SetPoint("TOPLEFT", block.Badge, "TOPRIGHT", 4, -1);
 	block.Header:SetPoint("TOPRIGHT", block, "TOPRIGHT", -4, 0);
 	block.Header:SetHeight(INNER_HEIGHT);
@@ -410,7 +410,7 @@ function MOD:InitializeScenarios()
 	block.Header.Text:SetPoint("TOPLEFT", block.Header.Stage, "TOPRIGHT", 4, 0);
 	block.Header.Text:SetPoint("BOTTOMRIGHT", block.Header.Score, "BOTTOMRIGHT", 0, 0);
 
-	local timer = CreateFrame("Frame", nil, block.Header, BackdropTemplateMixin and "BackdropTemplate")
+	local timer = CreateFrame("Frame", nil, block.Header)
 	timer:SetPoint("TOPLEFT", block.Header, "BOTTOMLEFT", 4, -4);
 	timer:SetPoint("TOPRIGHT", block.Header, "BOTTOMRIGHT", -4, -4);
 	timer:SetHeight(INNER_HEIGHT);
@@ -423,7 +423,7 @@ function MOD:InitializeScenarios()
 	timer.UpdateMedals = UpdateChallengeMedals;
 	timer.UpdateChallenges = UpdateChallengeTimer;
 
-	timer.Bar = CreateFrame("StatusBar", nil, timer, BackdropTemplateMixin and "BackdropTemplate");
+	timer.Bar = CreateFrame("StatusBar", nil, timer);
 	timer.Bar:SetAllPoints(timer);
 	timer.Bar:SetStatusBarTexture(SV.media.statusbar.default)
 	timer.Bar:SetStatusBarColor(0.5,0,1) --1,0.15,0.08

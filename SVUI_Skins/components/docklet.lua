@@ -305,6 +305,35 @@ DOCK_EMBEDS["TinyDPS"] = function(self)
 end
 --[[
 ##########################################################
+keivamp's SVUI temp Quest Tracker
+##########################################################
+]]--
+DOCK_EMBEDS["SVUI_QuestTracker"] = function(self)
+	if((not IsAddOnLoaded("SVUI_QuestTracker")) or (not _G.SVUI_QuestTrackerScrollFrame)) then return false end
+
+	local width = self:GetWidth()
+    local height = SV.Dock.BottomRight.Window:GetHeight();
+	SVUI_QuestTrackerScrollFrame:ClearAllPoints()
+	SVUI_QuestTrackerScrollFrame:SetAllPoints(self)
+	SVUI_QuestTrackerScrollFrame:SetParent(self)
+	-- _G['SVUI_QuestTrackerScrollFrame']:SetSize(width - 2, height - 4)
+	 _G['SVUI_QuestTrackerScrollFrameScrollBar']:ClearAllPoints()
+	 _G['SVUI_QuestTrackerScrollFrameScrollBar']:SetPoint("TOPLEFT", _G.SVUI_QuestTrackerScrollFrame, "TOPLEFT", -15, 0);
+	 _G['SVUI_QuestTrackerScrollFrameScrollBar']:SetHeight(height)
+	 _G['SVUI_QuestTrackerScrollFrame2']:SetWidth(width)
+	 _G['SVUI_QuestTrackerScrollFrameScrollChild']:SetWidth(width)
+	 _G['SVUI_QuestTrackerScrollFrame']:SetMovable(false)
+	 _G['SVUI_QuestTrackerScrollFrameScrollChild']:SetHeight(800)
+	 _G['SVUI_QuestTrackerScrollFrame2']:SetHeight(800)
+	  _G['SVUI_QuestTrackerScrollFrameScrollChild']:SetWidth(width-30)
+	 _G['SVUI_QuestTrackerScrollFrame2']:SetWidth(width-30)
+	--tdpsRefresh()
+
+	self.Framelink = SVUI_QuestTrackerScrollFrame
+	return true
+end
+--[[
+##########################################################
 !DETAILS (IN DEVELOPMENT)
 ##########################################################
 ]]--

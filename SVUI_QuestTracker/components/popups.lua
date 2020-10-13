@@ -52,7 +52,7 @@ local GetPopUpRow = function(self, index)
 	if(not self.Rows[index]) then
 		local previousFrame = self.Rows[#self.Rows]
 		index = #self.Rows + 1;
-		local row = CreateFrame("Frame", nil, self, BackdropTemplateMixin and "BackdropTemplate")
+		local row = CreateFrame("Frame", nil, self)
 		if(previousFrame) then
 			row:SetPoint("TOPLEFT", previousFrame, "BOTTOMLEFT", 0, -2);
 			row:SetPoint("TOPRIGHT", previousFrame, "BOTTOMRIGHT", 0, -2);
@@ -61,7 +61,7 @@ local GetPopUpRow = function(self, index)
 			row:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, -2);
 		end
 		row:SetHeight(LARGE_ROW_HEIGHT);
-		row.Button = CreateFrame("Button", nil, row, BackdropTemplateMixin and "BackdropTemplate")
+		row.Button = CreateFrame("Button", nil, row)
 		row.Button:SetPoint("TOPLEFT", row, "TOPLEFT", 0, 0);
 		row.Button:SetPoint("BOTTOMRIGHT", row, "BOTTOMRIGHT", 0, 0);
 		row.Button:SetStyle("Button")
@@ -69,7 +69,7 @@ local GetPopUpRow = function(self, index)
 		row.Button:SetID(0)
 		row.Button.PopUpType = nil;
 		row.Button:SetScript("OnClick", PopUpButton_OnClick)
-		row.Badge = CreateFrame("Frame", nil, row.Button, BackdropTemplateMixin and "BackdropTemplate")
+		row.Badge = CreateFrame("Frame", nil, row.Button)
 		row.Badge:SetPoint("TOPLEFT", row.Button, "TOPLEFT", 4, -4);
 		row.Badge:SetSize((LARGE_INNER_HEIGHT - 4), (LARGE_INNER_HEIGHT - 4));
 		row.Badge:SetStyle("!_Frame", "Icon")
@@ -77,7 +77,7 @@ local GetPopUpRow = function(self, index)
 		row.Badge.Icon:InsetPoints(row.Badge);
 		row.Badge.Icon:SetTexture(MOD.media.incompleteIcon)
 		row.Badge.Icon:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))
-		row.Header = CreateFrame("Frame", nil, row.Button, BackdropTemplateMixin and "BackdropTemplate")
+		row.Header = CreateFrame("Frame", nil, row.Button)
 		row.Header:SetPoint("TOPLEFT", row.Badge, "TOPRIGHT", 4, -1);
 		row.Header:SetPoint("BOTTOMRIGHT", row.Button, "BOTTOMRIGHT", -5, 5);
 		row.Header:SetStyle("Frame")
@@ -206,7 +206,7 @@ local function UpdatePopupLocals(...)
 end
 
 function MOD:InitializePopups()
-	local popups = CreateFrame("Frame", nil, self.Docklet, BackdropTemplateMixin and "BackdropTemplate")
+	local popups = CreateFrame("Frame", nil, self.Docklet)
 	popups:SetPoint("BOTTOMLEFT", self.Docklet, "TOPLEFT");
     popups:SetPoint("BOTTOMRIGHT", self.Docklet, "TOPRIGHT");
     popups:SetHeight(1);

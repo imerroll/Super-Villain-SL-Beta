@@ -89,7 +89,6 @@ local ItemBlacklist = {
 ITEM BAR/BUTTON CONSTRUCT
 ##########################################################
 ]]--
---print(GetNumQuestWatches())
 local ItemBar = _G["SVUI_QuestItemBar"];
 ItemBar.Buttons = {};
 
@@ -182,31 +181,31 @@ do
 		local shortestDistance = 62500
 		local closestQuestLink, closestQuestTexture
 		local activeQuestLink, activeQuestTexture
-		local numQuestLogLeaderBoards = GetNumQuestLeaderBoards()
-		for index = 1, numQuestLogLeaderBoards() do
+
+		for index = 1, GetNumQuestWatches() do
 			local questID, _, questIndex, _, _, isComplete = GetQuestWatchInfo(index)
 			if(questID and QuestHasPOIInfo(questID)) then
-				local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questIndex)
-				if(link) then
-					local areaID = QuestInZone[questID]
-					if questIndex == MOD.CurrentQuest then
-						activeQuestLink = link
-						activeQuestTexture = texture
-					end
-					if(areaID and areaID == GetCurrentMapAreaID()) then
-						closestQuestLink = link
-						closestQuestTexture = texture
-					elseif(not isComplete or (isComplete and showCompleted)) then
-						local distanceSq, onContinent = GetDistanceSqToQuest(questIndex)
-						if(onContinent and distanceSq < shortestDistance) then
-							shortestDistance = distanceSq
-							closestQuestLink = link
-							closestQuestTexture = texture
-						end
-					end
+				--local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questIndex)
+				--if(link) then
+					-- local areaID = QuestInZone[questID]
+					-- if questIndex == MOD.CurrentQuest then
+						--activeQuestLink = link
+						--activeQuestTexture = texture
+					-- end
+					-- if(areaID and areaID == GetCurrentMapAreaID()) then
+						--closestQuestLink = link
+						--closestQuestTexture = texture
+					-- elseif(not isComplete or (isComplete and showCompleted)) then
+						-- local distanceSq, onContinent = GetDistanceSqToQuest(questIndex)
+						-- if(onContinent and distanceSq < shortestDistance) then
+							-- shortestDistance = distanceSq
+							--closestQuestLink = link
+							--closestQuestTexture = texture
+						-- end
+					-- end
 
-					numItems = numItems + 1
-				end
+					-- numItems = numItems + 1
+				--end
 			end
 		end
 
@@ -443,16 +442,16 @@ local function CacheQuestHeaders()
 	wipe(QUEST_HEADER_MAP)
 
 	local currentHeader = "Misc";
-	-- local numEntries, numQuests = GetNumQuestLogEntries();
+	local numEntries, numQuests = C_QuestLog.GetNumQuestLogEntries();
 
-	-- for i = 1, numEntries do
-		-- local title, _, _, isHeader, _, _, _, questID = GetQuestLogTitle(i);
-		-- if(isHeader) then
-			-- currentHeader = title;
+	for i = 1, numEntries do
+		local title, _, _, isHeader, _, _, _, questID = C_QuestLog.GetTitleForLogIndex(i);
+		if(isHeader) then
+			currentHeader = title;
 		-- else
 			-- QUEST_HEADER_MAP[questID] = currentHeader
-		-- end
-	-- end
+		end
+	end
 end
 
 local function UpdateCachedQuests(needsSorting)
@@ -462,45 +461,62 @@ local function UpdateCachedQuests(needsSorting)
 	local HeadersCached = false;
 
 	wipe(QUESTS_BY_LOCATION)
-	
-
-	-- for i = 1, GetNumQuestWatches() do
-		-- local questID, _, questLogIndex, numObjectives, _, completed, _, _, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(i);
-		-- if(questID) then  -- and (not USED_QUESTIDS[questID])
-			-- local distanceSq, onContinent = GetDistanceSqToQuest(questLogIndex)
-			-- local title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = GetQuestLogTitle(questLogIndex)
-			-- local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
-			-- if(not CACHED_QUESTS[questID]) then
-				-- CACHED_QUESTS[questID] = {i, title, level, texture, questID, questLogIndex, numObjectives, duration, elapsed, completed, questType, link};
-			-- else
-				-- CACHED_QUESTS[questID][1] = i;	            -- args: quest watch index
-				-- CACHED_QUESTS[questID][2] = title;	        -- args: quest title
-				-- CACHED_QUESTS[questID][3] = level;	        -- args: quest level
-				-- CACHED_QUESTS[questID][4] = texture;	    -- args: quest item icon
-				-- CACHED_QUESTS[questID][5] = questID;	    -- args: quest id
-				-- CACHED_QUESTS[questID][6] = questLogIndex;	-- args: quest log index
-				-- CACHED_QUESTS[questID][7] = numObjectives;	-- args: quest objective count
-				-- CACHED_QUESTS[questID][8] = duration;		-- args: quest timer duration
-				-- CACHED_QUESTS[questID][9] = elapsed;		-- args: quest timer elapsed
-				-- CACHED_QUESTS[questID][10] = completed;		-- args: quest is completed
-				-- CACHED_QUESTS[questID][11] = questType;	    -- args: quest type
-				-- CACHED_QUESTS[questID][12] = link;	        -- args: quest item link
-			-- end
-
-			-- if(questID == MOD.ActiveQuestID) then
-				-- MOD:UpdateActiveObjective('FORCED_UPDATE')
-			-- end
-
-			-- if(not QUEST_HEADER_MAP[questID] and (not HeadersCached)) then
-				-- CacheQuestHeaders()
-				-- HeadersCached = true
-			-- end
-
-			-- local header = QUEST_HEADER_MAP[questID] or "Misc"
-
-			-- tinsert(QUESTS_BY_LOCATION, {distanceSq, header, questID});
+	-- local completed = C_QuestLog.GetAllCompletedQuestIDs()
+		-- for i=1, #completed do
+			  -- local id = completed[i]
+			  
 		-- end
-	-- end
+		--local title = C_QuestLog.GetInfo
+		--print(title)
+		-- C_QuestLog.GetNumQuestWatches() do
+		-- local title = C_QuestLog.GetTitleForLogIndex(i+1)
+		-- local questID = C_QuestLog.GetInfo(i+1)
+		-- local level = C_QuestLog.GetInfo(i+1)
+		-- local questLogIndex = C_QuestLog.GetInfo(i+1)
+		-- local completed = C_QuestLog.IsQuestFlaggedCompleted(i+1)
+
+	for i = 1, C_QuestLog.GetNumQuestWatches() do
+		local questID, _, questLogIndex, numObjectives, _, completed, _, _, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = C_QuestLog.GetInfo(i+1);
+		--local _,questLogIndex,questID,_,level = C_QuestLog.GetInfo(i+1)
+		local title = C_QuestLog.GetTitleForLogIndex(i+1)
+		if(questLogIndex) then  -- and (not USED_QUESTIDS[questID])
+			--local distanceSq = C_QuestLog.GetDistanceSqToQuest(questID)
+			
+			
+		--	local  level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = C_QuestLog.GetInfo(i+1)
+		--	local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
+		--print(questID)
+			if(not CACHED_QUESTS[questID]) then
+				CACHED_QUESTS[questID] = {i, title, level, questID, questLogIndex, numObjectives, duration, elapsed, completed, questType};
+			else
+				CACHED_QUESTS[questID][1] = i;	            -- args: quest watch index
+				CACHED_QUESTS[questID][2] = title;	        -- args: quest title
+				CACHED_QUESTS[questID][3] = level;	        -- args: quest level
+				CACHED_QUESTS[questID][4] = texture;	    -- args: quest item icon
+				CACHED_QUESTS[questID][5] = questID;	    -- args: quest id
+				CACHED_QUESTS[questID][6] = questLogIndex;	-- args: quest log index
+				CACHED_QUESTS[questID][7] = numObjectives;	-- args: quest objective count
+				CACHED_QUESTS[questID][8] = duration;		-- args: quest timer duration
+				CACHED_QUESTS[questID][9] = elapsed;		-- args: quest timer elapsed
+				CACHED_QUESTS[questID][10] = completed;		-- args: quest is completed
+				CACHED_QUESTS[questID][11] = questType;	    -- args: quest type
+				CACHED_QUESTS[questID][12] = link;	        -- args: quest item link
+			end
+
+			if(questID == MOD.ActiveQuestID) then
+				MOD:UpdateActiveObjective('FORCED_UPDATE')
+			end
+
+			if(not QUEST_HEADER_MAP[questID] and (not HeadersCached)) then
+				CacheQuestHeaders()
+				HeadersCached = true
+			end
+
+			local header = QUEST_HEADER_MAP[questID] or "Misc"
+
+			tinsert(QUESTS_BY_LOCATION, {distanceSq, header, questID});
+		end
+	end
 
 	tsort(QUESTS_BY_LOCATION, function(a,b)
 		if(a[2] and b[2]) then
@@ -561,7 +577,7 @@ local function AddCachedQuest(questLogIndex)
 
 			if(not CACHED_QUESTS[questID]) then
 				local title, level, suggestedGroup = GetQuestLogTitle(questLogIndex)
-				local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
+				--local link, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
 				local mapID, floorNumber = 0,0
 				if(not WorldMapFrame:IsShown()) then
 					mapID, floorNumber = GetQuestWorldMapAreaID(questID)
@@ -569,7 +585,7 @@ local function AddCachedQuest(questLogIndex)
 					WORLDMAP_UPDATE = true;
 				end
 
-				CACHED_QUESTS[questID] = {i, title, level, texture, questID, questLogIndex, numObjectives, duration, elapsed, completed, questType, link};
+				CACHED_QUESTS[questID] = {i, title, level, questID, questLogIndex, numObjectives, duration, elapsed, completed, questType};
 
 				if(not QUEST_HEADER_MAP[questID] and (not HeadersCached)) then
 					CacheQuestHeaders()
@@ -650,16 +666,16 @@ end
 
 local ActiveButton_OnClick = function(self, button)
 	local rowIndex = self:GetID();
-	if(rowIndex and (rowIndex ~= 0)) then
-		local questID, _, questLogIndex, numObjectives, requiredMoney, completed, startEvent, isAutoComplete, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(rowIndex);
-		if(questID) then
-			local title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = GetQuestLogTitle(questLogIndex)
-			local icon = self.Icon:GetTexture()
-			local itemLink, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
-			SetSuperTrackedQuestID(questID);
-			MOD.Headers["Active"]:Set(title, level, icon, questID, questLogIndex, numObjectives, duration, elapsed, isComplete, itemLink);
-		end
-	end
+	-- if(rowIndex and (rowIndex ~= 0)) then
+		-- local questID, _, questLogIndex, numObjectives, requiredMoney, completed, startEvent, isAutoComplete, duration, elapsed, questType, isTask, isStory, isOnMap, hasLocalPOI = GetQuestWatchInfo(rowIndex);
+		-- if(questID) then
+			-- local title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = GetQuestLogTitle(questLogIndex)
+			-- local icon = self.Icon:GetTexture()
+			-- local itemLink, texture, _, showCompleted = GetQuestLogSpecialItemInfo(questLogIndex)
+			-- SetSuperTrackedQuestID(questID);
+			-- MOD.Headers["Active"]:Set(title, level, icon, questID, questLogIndex, numObjectives, duration, elapsed, isComplete, itemLink);
+		-- end
+	-- end
 end
 
 local ViewButton_OnClick = function(self, button)
@@ -739,12 +755,12 @@ local GetQuestRow = function(self, index)
 			anchorFrame = self.Header;
 		end
 
-		local row = CreateFrame("Frame", nil, self, BackdropTemplateMixin and "BackdropTemplate")
+		local row = CreateFrame("Frame", nil, self)
 		row:SetPoint("TOPLEFT", anchorFrame, "BOTTOMLEFT", 0, yOffset);
 		row:SetPoint("TOPRIGHT", anchorFrame, "BOTTOMRIGHT", 0, yOffset);
 		row:SetHeight(QUEST_ROW_HEIGHT);
 
-		row.Badge = CreateFrame("Frame", nil, row, BackdropTemplateMixin and "BackdropTemplate")
+		row.Badge = CreateFrame("Frame", nil, row)
 		row.Badge:SetPoint("TOPLEFT", row, "TOPLEFT", 0, 0);
 		row.Badge:SetSize(QUEST_ROW_HEIGHT, QUEST_ROW_HEIGHT);
 		--row.Badge:SetStyle("Frame", "Lite")
@@ -754,7 +770,7 @@ local GetQuestRow = function(self, index)
 		row.Badge.Icon:SetTexture(MOD.media.incompleteIcon)
 		row.Badge.Icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
 
-		row.Badge.Button = CreateFrame("Button", nil, row.Badge, BackdropTemplateMixin and "BackdropTemplate")
+		row.Badge.Button = CreateFrame("Button", nil, row.Badge)
 		row.Badge.Button:SetAllPoints(row.Badge);
 		row.Badge.Button:SetStyle("LiteButton")
 		row.Badge.Button:SetID(0)
@@ -764,7 +780,7 @@ local GetQuestRow = function(self, index)
 		row.Badge.Button:SetScript("OnEnter", BadgeButton_OnEnter)
 		row.Badge.Button:SetScript("OnLeave", AnyButton_OnLeave)
 
-		row.Header = CreateFrame("Frame", nil, row, BackdropTemplateMixin and "BackdropTemplate")
+		row.Header = CreateFrame("Frame", nil, row)
 		row.Header:SetPoint("TOPLEFT", row, "TOPLEFT", (QUEST_ROW_HEIGHT + 6), 0);
 		row.Header:SetPoint("TOPRIGHT", row, "TOPRIGHT", -2, 0);
 		row.Header:SetHeight(INNER_HEIGHT);
@@ -791,7 +807,7 @@ local GetQuestRow = function(self, index)
 		row.Header.Zone:SetTextColor(0.75,0.25,1)
 		row.Header.Zone:SetText("")
 
-		row.Button = CreateFrame("Button", nil, row.Header, BackdropTemplateMixin and "BackdropTemplate")
+		row.Button = CreateFrame("Button", nil, row.Header)
 		row.Button:SetPoint("TOPLEFT", row, "TOPLEFT", (QUEST_ROW_HEIGHT + 6), 0);
 		row.Button:SetPoint("TOPRIGHT", row, "TOPRIGHT", -2, 0);
 		row.Button:SetHeight(INNER_HEIGHT + 2);
@@ -802,12 +818,12 @@ local GetQuestRow = function(self, index)
 		row.Button:SetScript("OnEnter", RowButton_OnEnter)
 		row.Button:SetScript("OnLeave", AnyButton_OnLeave)
 
-		row.Timer = CreateFrame("Frame", nil, row, BackdropTemplateMixin and "BackdropTemplate")
+		row.Timer = CreateFrame("Frame", nil, row)
 		row.Timer:SetPoint("TOPLEFT", row, "BOTTOMLEFT", 0, 4);
 		row.Timer:SetPoint("TOPRIGHT", row, "BOTTOMRIGHT", 0, 4);
 		row.Timer:SetHeight(INNER_HEIGHT);
 
-		row.Timer.Bar = CreateFrame("StatusBar", nil, row.Timer, BackdropTemplateMixin and "BackdropTemplate");
+		row.Timer.Bar = CreateFrame("StatusBar", nil, row.Timer);
 		row.Timer.Bar:SetPoint("TOPLEFT", row.Timer, "TOPLEFT", 4, -2);
 		row.Timer.Bar:SetPoint("BOTTOMRIGHT", row.Timer, "BOTTOMRIGHT", -4, 2);
 		row.Timer.Bar:SetStatusBarTexture(SV.media.statusbar.default)
@@ -815,7 +831,7 @@ local GetQuestRow = function(self, index)
 		row.Timer.Bar:SetMinMaxValues(0, 1)
 		row.Timer.Bar:SetValue(0)
 
-		local bgFrame = CreateFrame("Frame", nil, row.Timer.Bar, BackdropTemplateMixin and "BackdropTemplate")
+		local bgFrame = CreateFrame("Frame", nil, row.Timer.Bar)
 		bgFrame:InsetPoints(row.Timer.Bar, -2, -2)
 		bgFrame:SetFrameLevel(bgFrame:GetFrameLevel() - 1)
 
@@ -905,14 +921,14 @@ local SetQuestRow = function(self, index, watchIndex, title, level, icon, questI
 	row.Badge:SetAlpha(1);
 	row.Button:SetAlpha(1);
 	row.Button:Enable();
-	row.Button:SetID(questLogIndex);
+	--row.Button:SetID(C_QuestLog.GetQuestIDForLogIndex(questLogIndex));
 	row:SetHeight(QUEST_ROW_HEIGHT);
 	row:FadeIn();
 
 	local objective_block = row.Objectives;
 	objective_block:Reset();
 
-	for i = 1, subCount do
+	for i = 1, 30 do
 		local description, category, objective_completed = GetQuestLogLeaderBoard(i, questLogIndex);
 		-- local description, category, objective_completed = GetQuestObjectiveInfo(questID, i, false);
 		if not objective_completed then iscomplete = false end
@@ -1062,8 +1078,7 @@ function MOD:UpdateObjectives(event, ...)
 	if(event == "ZONE_CHANGED_NEW_AREA") then
 		if(not WorldMapFrame:IsShown() and GetCVarBool("questPOI")) then
 			--SetMapToCurrentZone();
-			local cmap = C_Map.GetBestMapForUnit("player")
-			CURRENT_MAP_ID = GetCurrentMapAreaID();
+			CURRENT_MAP_ID = C_Map.GetBestMapForUnit("player")();
 			UpdateCachedDistance();
 			self.Headers["Quests"]:LiteReset()
 			self.Headers["Quests"]:Refresh(event, ...)
@@ -1073,7 +1088,7 @@ function MOD:UpdateObjectives(event, ...)
 		if(inMicroDungeon ~= self.inMicroDungeon) then
 			if(not WorldMapFrame:IsShown() and GetCVarBool("questPOI")) then
 				--SetMapToCurrentZone();
-				CURRENT_MAP_ID = GetCurrentMapAreaID();
+				CURRENT_MAP_ID = C_Map.GetBestMapForUnit("player")();
 				UpdateCachedDistance();
 				self.Headers["Quests"]:LiteReset()
 				self.Headers["Quests"]:Refresh(event, ...)
@@ -1097,7 +1112,7 @@ function MOD:UpdateObjectives(event, ...)
 			elseif(event == "QUEST_WATCH_LIST_CHANGED") then
 				questID, isTracked = ...;
 				if(questID) then
-					local questLogIndex = GetQuestLogIndexByID(questID)
+					local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
 					if(isTracked) then
 						local addedQuest = AddCachedQuest(questLogIndex)
 						self.Headers["Quests"]:AddQuest(addedQuest)
@@ -1223,13 +1238,13 @@ function MOD:InitializeQuests()
 	SV.Events:On("DOCKLET_HIDDEN", PostHideCallback, true);
 
 	local scrollChild = self.Docklet.ScrollFrame.ScrollChild;
-	local quests = CreateFrame("Frame", nil, scrollChild, BackdropTemplateMixin and "BackdropTemplate")
+	local quests = CreateFrame("Frame", nil, scrollChild)
 	quests:SetWidth(ROW_WIDTH);
 	quests:SetHeight(ROW_HEIGHT);
 	quests:SetPoint("TOPLEFT", self.Headers["Bonus"], "BOTTOMLEFT", 0, -4);
 	--quests:SetStyle()
 
-	quests.Header = CreateFrame("Frame", nil, quests, BackdropTemplateMixin and "BackdropTemplate")
+	quests.Header = CreateFrame("Frame", nil, quests)
 	quests.Header:SetPoint("TOPLEFT", quests, "TOPLEFT", 2, -2);
 	quests.Header:SetPoint("TOPRIGHT", quests, "TOPRIGHT", -2, -2);
 	quests.Header:SetHeight(INNER_HEIGHT);

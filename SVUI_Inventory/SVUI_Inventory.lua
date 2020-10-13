@@ -78,6 +78,7 @@ local RefProfessionColors = {
 LOCAL FUNCTIONS
 ##########################################################
 ]]--
+
 local goldFormat = "%s|TInterface\\MONEYFRAME\\UI-GoldIcon.blp:16:16|t"
 
 function MOD:UpdateStockpile()
@@ -246,7 +247,7 @@ local SlotUpdate = function(self, slotID)
 			r,g,b = bagType[1],bagType[2],bagType[3]
 		end
 	end
-
+	
 	--slot:SetBackdropColor(r,g,b,0.6)
 	--slot:SetBackdropBorderColor(r,g,b,1)
 
@@ -839,7 +840,7 @@ do
 			if(reset) then
 				BagBar:SetPoint("CENTER", BagBar.Grip, "CENTER", 0,0)
 			else
-				BagBar:SetPoint("BOTTOMLEFT", self.MasterFrame, "TOPLEFT", -4, 0)
+				BagBar:SetPoint("CENTER", BagBar.Grip, "CENTER", 0,0)
 			end
 		end
 	end
@@ -959,7 +960,7 @@ local NEXT_ACTION_FORCED, FORCED_CLOSED, FORCED_OPEN = false, false, false;
 local function CreateBackdrop(frame)
    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",
         insets = {top = -2, left = -2, bottom = -2, right = -2}})
-		frame:SetBackdropColor(0.35,0.35,0.35,0.85)
+		frame:SetBackdropColor(0.2,0.2,0.2,1)
 		frame:SetBackdropBorderColor(0,0,0,1)
 end
 do
@@ -1132,6 +1133,7 @@ do
 		local bagName = "SVUI_ContainerFrame";
 		local frame = CreateFrame("Button", "SVUI_ContainerFrame", SV.Screen,BackdropTemplateMixin and "BackdropTemplate");
 		CreateBackdrop(frame)
+		
 		tinsert(UISpecialFrames, bagName);
 
 		frame:SetStyle("Frame", "Pattern")
